@@ -1,0 +1,67 @@
+{
+  "env": {
+      "es2021": true,
+      "node": true
+  },
+  "extends": [
+      "eslint:recommended",
+      "google"
+  ],
+  "parserOptions": {
+      "ecmaVersion": 13,
+      "sourceType": "module"
+  },
+  "rules": {      
+    ////////// overrides of google config //////////
+    "max-len": ["error", {
+      "code": 80,
+      "tabWidth": 2,
+      "ignoreComments": true,
+      "ignoreTrailingComments": true,
+      "ignoreUrls": true,
+      "ignoreStrings": true
+    }], // enforce a maximum line length
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ], // enforce consistent spacing inside braces
+    "valid-jsdoc": ["error", {
+      "requireParamDescription": false,
+      "requireReturnDescription": false,
+      "requireReturn": false,
+      "prefer": {}
+    }], // deprecated but still works
+    "quotes": 2, // 	enforce the consistent use of either backticks, double, or single quotes
+    "quote-props": 0, // disallow reserved words being used as object literal keys (default is ["error", "consistent"])
+    ////////// Best Practices //////////
+    "complexity": ["error", 15], // specify the maximum cyclomatic complexity allowed in a program (off by default)
+    "consistent-return": 2, // require return statements to either always or never specify values
+    "default-case": 2, // require default case in switch statements (off by default)
+    "dot-notation": 2, // encourages use of dot notation whenever possible
+    "eqeqeq": 2, // require the use of === and !==
+    "func-style":"error", // enforce the consistent use of either `function` declarations or expressions
+    "no-alert": 2, // disallow the use of alert, confirm, and prompt
+    "no-div-regex": 2, // disallow division operators explicitly at beginning of regular expression (off by default)
+    "no-else-return": 2, // disallow else after a return in an if (off by default)
+    "no-labels": 2, // disallow use of labels for anything other then loops and switches
+    "no-eq-null": 2, // disallow comparisons to null without a type-checking operator (off by default)
+    "no-eval": 2, // disallow use of eval()
+    "no-floating-decimal": 2, // disallow the use of leading or trailing decimal points in numeric literals (off by default)
+    "no-implied-eval": 2, // disallow use of eval()-like methods
+    "no-iterator": 2, // disallow usage of __iterator__ property
+    "no-lone-blocks": 2, // disallow unnecessary nested blocks
+    "no-loop-func": 2, // disallow creation of functions within loops
+    "no-new": 2, // disallow use of new operator when not part of the assignment or comparison
+    "no-new-func": 2, // disallow use of new operator for Function object
+    "no-proto": 2, // disallow usage of __proto__ property
+    "no-return-assign": 2, // disallow use of assignment in return statement
+    "no-script-url": 2, // disallow use of javascript: urls.
+    "no-self-compare": 2, // disallow comparisons where both sides are exactly the same (off by default)
+    "no-sequences": 2, // disallow use of comma operator
+    "no-unused-expressions": 2, // disallow usage of expressions in statement position
+    ////////// Variables //////////
+    "no-undef-init": 2, // disallow use of undefined when initializing variables
+    "no-undefined": 1, // disallow use of undefined variable (off by default)
+    "no-unused-vars": 1 // disallow declaration of variables that are not used in the code
+  }
+}
