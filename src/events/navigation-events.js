@@ -1,12 +1,14 @@
-import { ABOUT, CATEGORIES, CONTAINER_SELECTOR, FAVORITES, HOME } from '../common/constants.js';
-import { loadCategories, loadCategory, loadGifs, loadSingleGif } from '../requests/request-service.js';
+import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME, TRENDING, UPLOAD, UPLOADED } from '../common/constants.js';
+import { loadSingleGif } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
-import { toCategoriesView } from '../views/category-view.js';
 import { toFavoritesView } from '../views/favorites-view.js';
 import { toHomeView } from '../views/home-view.js';
-import { toGifFromCategoryView, toSingleGifView } from '../views/gif-views.js';
+import { toSingleGifView } from '../views/gif-views.js';
 import { q, setActiveNav } from './helpers.js';
 import { getFavorites } from '../data/favorites.js';
+import { toTrendingView } from '../views/trending-view.js';
+import { toUploadedView } from '../views/uploaded-view.js';
+import { toUploadView } from '../views/upload-view.js';
 
 // public API
 export const loadPage = (page = '') => {
@@ -15,9 +17,17 @@ export const loadPage = (page = '') => {
       setActiveNav(HOME);
       return renderHome();
 
-    case CATEGORIES:
-      setActiveNav(CATEGORIES);
-      return renderCategories();
+    case TRENDING:
+      setActiveNav(TRENDING);
+      return renderTrending();
+
+    case UPLOADED:
+      setActiveNav(UPLOADED);
+      return renderUploaded();
+
+    case UPLOAD:
+      setActiveNav(UPLOAD);
+      return renderUpload();
 
     case FAVORITES:
       setActiveNav(FAVORITES);
@@ -38,23 +48,22 @@ export const renderGifDetails = (id = null) => {
   q(CONTAINER_SELECTOR).innerHTML = toSingleGifView(gif);
 };
 
-export const renderCategory = (categoryId = null) => {
-  const category = loadCategory(categoryId);
-  const gifs = loadGifs(category.id);
-
-  q(CONTAINER_SELECTOR).innerHTML = toGifFromCategoryView(category, gifs);
-};
-
 // private functions
 
 const renderHome = () => {
   q(CONTAINER_SELECTOR).innerHTML = toHomeView();
 };
 
-const renderCategories = () => {
-  const categories = loadCategories();
+const renderTrending = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toTrendingView();
+};
 
-  q(CONTAINER_SELECTOR).innerHTML = toCategoriesView(categories);
+const renderUploaded = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toUploadedView();
+};
+
+const renderUpload = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };
 
 const renderFavorites = () => {

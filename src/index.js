@@ -6,7 +6,10 @@ import { renderSearchItems } from './events/search-events.js';
 document.addEventListener('DOMContentLoaded', () => {
   // add global listener
   document.addEventListener('click', (event) => {
-    
+    // nav events
+    if (event.target.classList.contains('nav-link')) {
+      loadPage(event.target.getAttribute('data-page'));
+    }
   });
 
   // search events
