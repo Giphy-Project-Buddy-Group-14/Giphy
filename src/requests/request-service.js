@@ -1,31 +1,20 @@
-import { getCategories, getMoviesGeneralInfo, getMoviesFullInfo, getMovieById, getCategory, searchMovies } from '../data/movies.js';
+import { getGifsGeneralInfo, getGifById, searchGifs } from '../data/gifs.js';
 
-export const loadCategories = () => {
-  const categories = getCategories();
-  
-  return categories;
+
+export const loadGifs = (categoryId = null) => {
+  const gifs = getGifsGeneralInfo(categoryId);
+
+  return gifs;
 };
 
-export const loadCategory = (id = null) => {
-  const category = getCategory(id);
+export const loadSingleGif = (id) => {
+  const gif = getGifById(id);
 
-  return category;
-}
-
-export const loadMovies = (categoryId = null) => {
-  const movies = getMoviesGeneralInfo(categoryId);
-
-  return movies;
+  return gif;
 };
 
-export const loadSingleMovie = (id) => {
-  const movie = getMovieById(id);
+export const loadSearchGifs = (searchTerm = '') => {
+  const gifs = searchGifs(searchTerm);
 
-  return movie;  
-};
-
-export const loadSearchMovies = (searchTerm = '') => {
-  const movies = searchMovies(searchTerm);
-
-  return movies;
+  return gifs;
 };
