@@ -5,7 +5,7 @@ html, body {
 }
 
 body {
-  background: url('../images/dark-linen.png') repeat;
+  background-color: #121212;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -24,9 +24,12 @@ div#app {
   min-height: 100vh;
 }
 
+#app {
+  width: 80%;
+}
+
 header {
   grid-area: header;
-  height: 200px;
   background: url('../images/banner-top.png');
 }
 
@@ -53,7 +56,6 @@ nav a:hover {
 
 #container {
   grid-area: container;
-  background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   color: white;
 }
