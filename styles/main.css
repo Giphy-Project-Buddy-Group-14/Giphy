@@ -1,4 +1,7 @@
 @import url('/styles/upload.css');
+@import url('/styles/search.css');
+@import url('/styles/upload-button.css');
+@import url('/styles/nav.css');
 
 body {
   background-color: #121212;
@@ -16,7 +19,7 @@ body {
 }
 
 #app {
-  width: 70%;
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
   min-height: calc(100vh - 50px - 10px);
@@ -29,14 +32,6 @@ footer {
   margin-top: auto;
 }
 
-#search {
-  position: absolute;
-  margin-top: 8em;
-  width: 70%;
-  height: 3em;
-}
-
-nav {
-  grid-area: menu;
-  display: flex;
+#container {
+  margin-top: 4em;
 }

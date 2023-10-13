@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
   <link rel="stylesheet" href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap">
 </head>
+
 <body>
   <div id="app">
     <header></header>
@@ -23,7 +25,11 @@
       <a href="#" class="nav-link" data-page="favorites">Favorites</a>
       <a href="#" class="nav-link" data-page="about">About</a>
       <button href="#" class="nav-link" data-page="upload">Upload</button>
-      <input id="search" type="text" placeholder="Search">
+      <form class="search-container">
+        <input type="text" id="search" placeholder="Search all the GIFs">
+        <a href="#"><img class="search-icon"
+            src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+      </form>
     </nav>
     <div id="container">
       <!-- start placeholders -->
@@ -37,4 +43,5 @@
   <script src="./src/index.js" type="module"></script>
   <!-- end app -->
 </body>
+
 </html>
