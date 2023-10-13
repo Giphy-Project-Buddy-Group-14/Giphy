@@ -9,6 +9,7 @@ import { getFavorites } from '../data/favorites.js';
 import { toTrendingView } from '../views/trending-view.js';
 import { toUploadedView } from '../views/uploaded-view.js';
 import { toUploadView } from '../views/upload-view.js';
+import { addDropZoneEvents } from '../index.js';
 
 // public API
 export const loadPage = (page = '') => {
@@ -64,6 +65,7 @@ const renderUploaded = () => {
 
 const renderUpload = () => {
   q(CONTAINER_SELECTOR).innerHTML = toUploadView();
+  addDropZoneEvents();
 };
 
 const renderFavorites = () => {

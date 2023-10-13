@@ -15,3 +15,10 @@ export const CONTAINER_SELECTOR = '#container';
 export const FULL_HEART = '❤';
 
 export const EMPTY_HEART = '♡';
+
+export const gifFileTypes = [
+  'gif',
+  'mp4',
+  'mov',
+  'webm',
+];
