@@ -1,5 +1,5 @@
 import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME, TRENDING, UPLOAD, UPLOADED } from '../common/constants.js';
-import { loadSingleGif } from '../requests/request-service.js';
+// import { loadSingleGif } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 import { toFavoritesView } from '../views/favorites-view.js';
 import { toHomeView } from '../views/home-view.js';
@@ -7,7 +7,7 @@ import { toSingleGifView } from '../views/gif-views.js';
 import { q, setActiveNav } from './helpers.js';
 import { getFavorites } from '../data/favorites.js';
 import { toTrendingView } from '../views/trending-view.js';
-import { toUploadedView } from '../views/uploaded-view.js';
+// import { toUploadedView } from '../views/uploaded-view.js';
 import { toUploadView } from '../views/upload-view.js';
 import { addDropZoneEvents } from '../index.js';
 
