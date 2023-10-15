@@ -11,7 +11,7 @@ export const toGifFromCategoryView = (category, gifs) => `
 
 export const toSingleGifView = (gif) => `
 <div id="gifs">
-  <h1>${gif.title} (${gif.year})</h1>
+  <h1>${gif.title}</h1>
   <div class="content">
     ${toGifDetailed(gif)}
   </div>
@@ -28,13 +28,17 @@ export const toGifSimple = (gifUrl) => `
 const toGifDetailed = (gif) => `
 <div class="gif-detailed">
   <div class="poster">
-    <img src="${gif.poster}">
+    <img src="${gif.images.original.url}">
   </div>
   <div class="gif-info">
-    <p>Genre: ${gif.genre}</p>
-    <p>Director: ${gif.director}</p>
-    <p>Staring: ${gif.stars.join(', ')}</p>
-    <p>Plot: ${gif.description}</p>
+    <p>
+      <img src="${gif.user.avatar_url}" width="50" hight="50"/>
+    </p>
+    <p>User: ${gif.user.display_name}</p>
+    <p>Description: ${gif.user.description}</p>
+    <p>Profile GiPhy: ${gif.user.profile_url}</p>
+    <p>Profile Instagram: ${gif.user.instagram_url}</p>
+    <p>Rating: ${gif.user.rating}</p>
   </div>
 </div>
 `;

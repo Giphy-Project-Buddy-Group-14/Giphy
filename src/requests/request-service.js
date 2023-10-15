@@ -1,5 +1,7 @@
 import { TIHOMIR_API_KEY, UPLOAD_URL } from '../common/constants.js';
 import { getGifsGeneralInfo, getGifById, searchGifs } from '../data/gifs.js';
+import { API_URL, SVILENA_API_KEY } from "../common/constants.js";
+
 
 // Тука трябва да се ползват fetch() methods.
 export const loadGifs = (categoryId = null) => {
@@ -8,8 +10,20 @@ export const loadGifs = (categoryId = null) => {
   return gifs;
 };
 
-export const loadSingleGif = (id) => {
-  const gif = getGifById(id);
+export const loadTrendingGifS = () => {
+  const trendingGifS = fetch(`${API_URL}/trending?api_key=${SVILENA_API_KEY}&limit=20`);
+  return trendingGifS.then(response => response.json())
+    .then(response => response.data)
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+export const loadSingleGif = async (id) => {
+  const gif = await fetch(`${API_URL}/${id}?api_key=${SVILENA_API_KEY}`)
+  .then(response => response.json())
+  .then(response => response.data)
+  .catch(console.error);
 
   return gif;
 };
