@@ -60,7 +60,9 @@ const renderTrending = () => {
 };
 
 const renderUploaded = () => {
-  q(CONTAINER_SELECTOR).innerHTML = toUploadedView();
+  const uploadedArr = JSON.parse(localStorage.getItem('uploadedGifs')) || [];
+  console.log(uploadedArr);
+  q(CONTAINER_SELECTOR).innerHTML = toUploadedView(uploadedArr);
 };
 
 const renderUpload = () => {

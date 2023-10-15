@@ -19,13 +19,9 @@ export const toSingleGifView = (gif) => `
 `;
 // Тука трябва да се направят корекции понеже е за филмите
 
-export const toGifSimple = (gif) => `
+export const toGifSimple = (gifUrl) => `
 <div class="gif">
-  <h1>${gif.title}</h1>
-  <h2>${gif.year}</h2>
-  <img src="${gif.poster}"><br>
-  <button class="view-gif-btn" data-gif-id="${gif.id}">View details</button>
-  ${renderFavoriteStatus(gif.id)}
+  <img src="${gifUrl}"><br>
 </div>
 `;
 

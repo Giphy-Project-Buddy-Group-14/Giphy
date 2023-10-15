@@ -1,4 +1,3 @@
-import { loadUploadGif } from '../requests/request-service.js';
 import { fileValidate, progressMove, q } from './helpers.js';
 
 export const renderFilePreview = (file) => {
@@ -9,8 +8,6 @@ export const renderFilePreview = (file) => {
   if (fileValidate(fileType, fileSize)) {
     q('#dropZoon').classList.add('drop-zoon--Uploaded');
 
-
-    // q('#loadingText').style.display = 'block';
     q('#previewImage').style.display = 'none';
 
 
@@ -35,10 +32,22 @@ export const renderFilePreview = (file) => {
 
       const uploadedFileName = q('.uploaded-file__name');
       uploadedFileName.innerHTML = file.name;
-      progressMove(fileReader, file);
+      const response = await progressMove(fileReader, file);
+      const id = (await response.json()).data.id;
+
+      console.log(id);
+      if (localStorage.getItem('uploadedGifs')) {
+        console.log('here');
+        const uploadedArr = (JSON.parse(localStorage.getItem('uploadedGifs')));
+        uploadedArr.push(id);
+        localStorage.setItem('uploadedGifs', JSON.stringify(uploadedArr));
+      } else {
+        localStorage.setItem('uploadedGifs', JSON.stringify([id]));
+      }
     });
 
     fileReader.readAsDataURL(file);
+
   } else {
     this;
   }

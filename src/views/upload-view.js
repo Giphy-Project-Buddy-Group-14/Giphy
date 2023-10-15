@@ -39,7 +39,7 @@ export const toUploadView = () => `
       </div>
 
       <div id="uploadedFileInfo" class="uploaded-file__info">
-        <span class="uploaded-file__name">Proejct 1</span>
+        <span class="uploaded-file__name">Project 1</span>
         <span class="uploaded-file__counter">0%</span>
       </div>
     </div>

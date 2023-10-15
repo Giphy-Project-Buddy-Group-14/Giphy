@@ -28,8 +28,9 @@ export const loadUploadGif = async (reader, file, onProgress) => {
     const uploadRequest = await fetch(`https://${UPLOAD_URL}?api_key=${TIHOMIR_API_KEY}`, {
       method: 'POST',
       body: formContent,
-      onProgress,
+      onProgress: onProgress,
     });
+
     return uploadRequest;
   } catch (error) {
     console.log(error);

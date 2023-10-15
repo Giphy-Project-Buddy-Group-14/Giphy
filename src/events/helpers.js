@@ -51,10 +51,11 @@ export const progressMove = async (fileReader, file) => {
   };
 
   try {
-    await loadUploadGif(fileReader, file, onProgress);
+    const uploaded = await loadUploadGif(fileReader, file, onProgress);
     // Clear the progress bar
     clearInterval(counterIncrease);
     uploadedFileCounter.innerHTML = '100%';
+    return uploaded
   } catch (error) {
     console.log(error);
   }
