@@ -27,8 +27,6 @@ export const loadSingleGif = async (id) => {
 
   return gif;
 };
-  return gif;
-};
 
 export const loadSearchGifs = (searchTerm = '') => {
   const gifs = searchGifs(searchTerm);
