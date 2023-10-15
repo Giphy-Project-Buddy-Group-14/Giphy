@@ -46,6 +46,7 @@ export const loadPage = (page = '', id = null) => {
 };
 
 export const renderGifDetails = async (id = null) => {
+  q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
   const gif = await loadSingleGif(id);
   q(CONTAINER_SELECTOR).innerHTML = toSingleGifView(gif);
 };
@@ -57,6 +58,7 @@ const renderHome = () => {
 };
 
 const renderTrending = async () => {
+  q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
   const gifS = await loadTrendingGifS();
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifS);
 };

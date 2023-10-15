@@ -1,17 +1,13 @@
-import {
-  API_URL,
-  SVILENA_API_KEY
-} from "../common/constants.js";
-import {
-  q
-} from "../events/helpers.js";
 
 export const toTrendingView = (gifS) => {
   const gifSHTML = gifS.map((gif) => {
-    return `<img class="gif-item" data-id="${gif.id}" src="${gif.images.fixed_height.url}" />`;
+    return `<div class="gif-item" data-gifId="${gif.id}">
+    <img src="${gif.images.fixed_height.url}" data-gifId="${gif.id}" />
+    <div class="gif-info" data-gifId="${gif.id}">${gif.user && gif.user.description || '-'}</div>
+  </div>`;
   }).join('\n');
 
-return `
+  return `
   <div id="trending">
     ${gifSHTML}
   </div>`
