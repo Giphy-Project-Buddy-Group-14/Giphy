@@ -19,54 +19,19 @@ export const setActiveNav = (page) => {
   const navs = qs('a.nav-link');
 
   Array
-    .from(navs)
-    .forEach((element) => element
-      .getAttribute('data-page') === page ?
+      .from(navs)
+      .forEach((element) => element
+          .getAttribute('data-page') === page ?
       element.classList.add('active') :
       element.classList.remove('active'),
-    );
+      );
 };
 
-// export const progressMove = async (fileReader, file) => {
-//   let counter = 0;
-//   const uploadedFileCounter = q('.uploaded-file__counter');
-//   uploadedFileCounter.innerHTML = `0%`;
-
-//   const counterIncrease = setInterval(() => {
-//     if (counter === 100) {
-//       clearInterval(counterIncrease);
-//     } else {
-//       counter += 10;
-//       uploadedFileCounter.innerHTML = `${counter}%`;
-//     }
-//   }, 100);
-
-//   const onProgress = (event) => {
-//     if (event.lengthComputable) {
-//       // Calculate the percentage based on the total and loaded bytes
-//       const percentage = (event.loaded / event.total) * 100;
-//       counter = Math.min(percentage, 100);
-//       uploadedFileCounter.innerHTML = `${counter.toFixed(2)}%`;
-//     }
-//   };
-
-//   try {
-//     const uploaded = await loadUploadGif(fileReader, file, onProgress);
-//     // Clear the progress bar
-//     clearInterval(counterIncrease);
-//     uploadedFileCounter.innerHTML = '100%';
-//     return uploaded
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
 export const progressMove = async (fileReader, file) => {
-  let counter = 0;
+  const counter = 0;
   const uploadedFileCounter = q('.uploaded-file__counter');
   uploadedFileCounter.innerHTML = `0%`;
-
-  
 };
 
 export const fileValidate = (fileType, fileSize) => {

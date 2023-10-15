@@ -8,7 +8,7 @@ export const toTrendingView = (gifS) => {
   }).join('\n');
 
   return `
-  <div id="trending">
+  <div id="gif-grid">
     ${gifSHTML}
   </div>`
 };

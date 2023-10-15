@@ -36,13 +36,13 @@ footer {
   margin-top: 4em;
 }
 
-#trending {
+#gif-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
-#trending .gif-item {
+#gif-grid .gif-item {
   width: 200px;
   height: 200px;
   display: flex;
@@ -53,12 +53,12 @@ footer {
   cursor: pointer;
 }
 
-#trending .gif-item img {
+#gif-grid .gif-item img {
   transition: scale 0.2s, opacity 0.2s;
   opacity: 0.6;
 }
 
-#trending .gif-info {
+#gif-grid .gif-info {
   position: absolute;
   left: 0;
   right: 0;
@@ -72,12 +72,12 @@ footer {
   text-overflow: ellipsiss;
 }
 
-#trending .gif-item:hover img {
+#gif-grid .gif-item:hover img {
   scale: 1.2;
   opacity: 1;
 }
 
-#trending .gif-item:hover .gif-info {
+#gif-grid .gif-item:hover .gif-info {
   background: rgb(0, 0, 0);
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
 }

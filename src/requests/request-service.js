@@ -35,26 +35,6 @@ export const loadSearchGifs = (searchTerm = '') => {
   return gifs;
 };
 
-// export const loadUploadGif = async (reader, file) => {
-//   const formContent = new FormData();
-//   formContent.append('file', file);
-
-//   try {
-//     const uploadRequest = await fetch(`https://${UPLOAD_URL}?api_key=${TIHOMIR_API_KEY}`, {
-//       method: 'POST',
-//       body: formContent,
-//     });
-
-//     if (uploadRequest.ok) {
-//       return uploadRequest;
-//     } else {
-//       throw new Error(`Upload request failed with status: ${uploadRequest.status}`);
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     return error;
-//   }
-// };
 
 export const loadUploadGif = (reader, file) => {
   return new Promise((resolve, reject) => {

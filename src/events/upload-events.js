@@ -33,23 +33,25 @@ export const renderFilePreview = (file) => {
 
       const uploadedFileName = q('.uploaded-file__name');
       uploadedFileName.innerHTML = file.name;
+      try {
+        const response = await loadUploadGif(fileReader, file);
+        console.log(response);
+        const id = JSON.parse(response).data.id;
 
-      const response = await loadUploadGif(fileReader, file);
-      console.log(response);
-      const id = JSON.parse(response).data.id;
-
-      if (localStorage.getItem('uploadedGifs')) {
-        console.log('here');
-        const uploadedArr = (JSON.parse(localStorage.getItem('uploadedGifs')));
-        uploadedArr.push(id);
-        localStorage.setItem('uploadedGifs', JSON.stringify(uploadedArr));
-      } else {
-        localStorage.setItem('uploadedGifs', JSON.stringify([id]));
+        if (localStorage.getItem('uploadedGifs')) {
+          console.log('here');
+          const uploadedArr = (JSON.parse(localStorage.getItem('uploadedGifs')));
+          uploadedArr.push(id);
+          localStorage.setItem('uploadedGifs', JSON.stringify(uploadedArr));
+        } else {
+          localStorage.setItem('uploadedGifs', JSON.stringify([id]));
+        }
+      } catch (error) {
+        console.log(error);
       }
     });
 
     fileReader.readAsDataURL(file);
-
   } else {
     this;
   }

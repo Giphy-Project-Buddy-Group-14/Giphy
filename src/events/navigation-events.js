@@ -63,10 +63,21 @@ const renderTrending = async () => {
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifS);
 };
 
-const renderUploaded = () => {
+const renderUploaded = async () => {
   const uploadedArr = JSON.parse(localStorage.getItem('uploadedGifs')) || [];
-  console.log(uploadedArr);
-  q(CONTAINER_SELECTOR).innerHTML = toUploadedView(uploadedArr);
+  
+  const gifs = await Promise.all(uploadedArr.map(async (id) => {
+    try {
+      return await loadSingleGif(id);
+    } catch (error) {
+      console.error(error.message);
+      return null;
+    }
+  }));
+
+  console.log(gifs);
+
+  q(CONTAINER_SELECTOR).innerHTML = toUploadedView(gifs);
 };
 
 const renderUpload = () => {
