@@ -27,13 +27,6 @@ export const setActiveNav = (page) => {
       );
 };
 
-
-export const progressMove = async (fileReader, file) => {
-  const counter = 0;
-  const uploadedFileCounter = q('.uploaded-file__counter');
-  uploadedFileCounter.innerHTML = `0%`;
-};
-
 export const fileValidate = (fileType, fileSize) => {
   const isImage = gifFileTypes.filter((type) =>
     fileType.indexOf(`image/${type}`) !== -1);

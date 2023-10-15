@@ -36,7 +36,7 @@ export const loadSearchGifs = (searchTerm = '') => {
 };
 
 
-export const loadUploadGif = (reader, file) => {
+export const loadUploadGif = (file) => {
   return new Promise((resolve, reject) => {
     const formContent = new FormData();
     formContent.append('file', file);
@@ -47,12 +47,13 @@ export const loadUploadGif = (reader, file) => {
     uploadedFileCounter.innerHTML = `0%`;
 
     xhr.upload.addEventListener('progress', (event) => {
-      uploadedFileCounter.innerHTML = `${Math.round((event.loaded / event.total) * 100)}%`;
+      uploadedFileCounter.innerHTML = `${Math.round((event.loaded / event.total) * 99)}%`;
     });
 
     xhr.addEventListener('load', () => {
       if (xhr.status >= 200 && xhr.status < 300) {
         resolve(xhr.responseText);
+        uploadedFileCounter.innerHTML = `100%`;
       } else {
         reject(new Error(`Request failed with status ${xhr.status}`));
       }

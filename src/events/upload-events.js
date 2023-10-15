@@ -1,5 +1,5 @@
 import { loadUploadGif } from '../requests/request-service.js';
-import { fileValidate, progressMove, q } from './helpers.js';
+import { fileValidate, q } from './helpers.js';
 
 export const renderFilePreview = (file) => {
   const fileReader = new FileReader();
@@ -34,7 +34,7 @@ export const renderFilePreview = (file) => {
       const uploadedFileName = q('.uploaded-file__name');
       uploadedFileName.innerHTML = file.name;
       try {
-        const response = await loadUploadGif(fileReader, file);
+        const response = await loadUploadGif(file);
         console.log(response);
         const id = JSON.parse(response).data.id;
 
