@@ -1,5 +1,6 @@
 import { toGifSimple } from './gif-views.js';
 
+// Тука също трябва да се пренапише
 export const toSearchView = (movies, searchTerm) => `
 <div id="movies">
   <h1>Movies found for "${searchTerm}":</h1>

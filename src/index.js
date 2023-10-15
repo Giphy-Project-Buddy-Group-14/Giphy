@@ -1,7 +1,7 @@
 import { HOME } from './common/constants.js';
 import { q } from './events/helpers.js';
 import { loadPage } from './events/navigation-events.js';
-// import { renderSearchItems } from './events/search-events.js';
+import { renderSearchItems } from './events/search-events.js';
 import { renderFilePreview } from './events/upload-events.js';
 
 document.addEventListener('DOMContentLoaded', () => {
