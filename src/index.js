@@ -12,8 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
       loadPage(event.target.getAttribute('data-page'));
     }
 
-    if (event.target.classList.contains('gif-item')) {
-      const gifId = event.target.getAttribute('data-id');
+    console.log('event.target', event.target);
+
+    if (event.target.getAttribute('data-gifId')) {
+      const gifId = event.target.getAttribute('data-gifId');
       loadPage(GIF_DETAILS, gifId);
     }
   });

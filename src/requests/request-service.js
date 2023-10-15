@@ -11,7 +11,7 @@ export const loadGifs = (categoryId = null) => {
 };
 
 export const loadTrendingGifS = () => {
-  const trendingGifS = fetch(`${API_URL}/trending?api_key=${SVILENA_API_KEY}&limit=20`);
+  const trendingGifS = fetch(`${API_URL}/trending?api_key=${SVILENA_API_KEY}&limit=50`);
   return trendingGifS.then(response => response.json())
     .then(response => response.data)
     .catch((error) => {
@@ -21,9 +21,9 @@ export const loadTrendingGifS = () => {
 
 export const loadSingleGif = async (id) => {
   const gif = await fetch(`${API_URL}/${id}?api_key=${SVILENA_API_KEY}`)
-  .then(response => response.json())
-  .then(response => response.data)
-  .catch(console.error);
+    .then(response => response.json())
+    .then(response => response.data)
+    .catch(console.error);
 
   return gif;
 };
