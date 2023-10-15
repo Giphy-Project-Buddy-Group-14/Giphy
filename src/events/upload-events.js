@@ -1,4 +1,5 @@
-import { fileValidate, progressMove, q } from "./helpers.js";
+import { loadUploadGif } from '../requests/request-service.js';
+import { fileValidate, progressMove, q } from './helpers.js';
 
 export const renderFilePreview = (file) => {
   const fileReader = new FileReader();
@@ -9,7 +10,7 @@ export const renderFilePreview = (file) => {
     q('#dropZoon').classList.add('drop-zoon--Uploaded');
 
 
-    q('#loadingText').style.display = 'block';
+    // q('#loadingText').style.display = 'block';
     q('#previewImage').style.display = 'none';
 
 
@@ -17,12 +18,11 @@ export const renderFilePreview = (file) => {
     q('#uploadedFileInfo').classList.remove('uploaded-file__info--active');
 
     // After File Reader Loaded
-    fileReader.addEventListener('load', function() {
+    fileReader.addEventListener('load', async () => {
       const uploadArea = q('#uploadArea');
 
       uploadArea.classList.add('upload-area--open');
 
-      q('#loadingText').style.display = 'none';
       q('#previewImage').style.display = 'block';
 
       const fileDetails = q('#fileDetails');
@@ -35,8 +35,7 @@ export const renderFilePreview = (file) => {
 
       const uploadedFileName = q('.uploaded-file__name');
       uploadedFileName.innerHTML = file.name;
-
-      progressMove();
+      progressMove(fileReader, file);
     });
 
     fileReader.readAsDataURL(file);

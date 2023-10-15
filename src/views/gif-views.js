@@ -17,6 +17,7 @@ export const toSingleGifView = (gif) => `
   </div>
 </div>
 `;
+// Тука трябва да се направят корекции понеже е за филмите
 
 export const toGifSimple = (gif) => `
 <div class="gif">
