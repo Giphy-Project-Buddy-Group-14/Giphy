@@ -1,4 +1,4 @@
-import { HOME } from './common/constants.js';
+import { GIF_DETAILS, HOME } from './common/constants.js';
 import { q } from './events/helpers.js';
 import { loadPage } from './events/navigation-events.js';
 // import { renderSearchItems } from './events/search-events.js';
@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // nav events
     if (event.target.classList.contains('nav-link')) {
       loadPage(event.target.getAttribute('data-page'));
+    }
+
+    if (event.target.classList.contains('gif-item')) {
+      const gifId = event.target.getAttribute('data-id');
+      loadPage(GIF_DETAILS, gifId);
     }
   });
 

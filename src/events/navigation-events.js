@@ -1,5 +1,5 @@
-import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME, TRENDING, UPLOAD, UPLOADED } from '../common/constants.js';
-// import { loadSingleGif } from '../requests/request-service.js';
+import { ABOUT, CONTAINER_SELECTOR, FAVORITES, GIF_DETAILS, HOME, TRENDING, UPLOAD, UPLOADED } from '../common/constants.js';
+import { loadSingleGif, loadTrendingGifS } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 import { toFavoritesView } from '../views/favorites-view.js';
 import { toHomeView } from '../views/home-view.js';
@@ -12,7 +12,7 @@ import { toUploadView } from '../views/upload-view.js';
 import { addDropZoneEvents } from '../index.js';
 
 // public API
-export const loadPage = (page = '') => {
+export const loadPage = (page = '', id = null) => {
   switch (page) {
     case HOME:
       setActiveNav(HOME);
@@ -38,14 +38,15 @@ export const loadPage = (page = '') => {
       setActiveNav(ABOUT);
       return renderAbout();
 
+    case GIF_DETAILS:
+      return renderGifDetails(id);
     /* if the app supports error login, use default to log mapping errors */
     default: return null;
   }
 };
 
-export const renderGifDetails = (id = null) => {
-  const gif = loadSingleGif(id);
-
+export const renderGifDetails = async (id = null) => {
+  const gif = await loadSingleGif(id);
   q(CONTAINER_SELECTOR).innerHTML = toSingleGifView(gif);
 };
 
@@ -55,8 +56,9 @@ const renderHome = () => {
   q(CONTAINER_SELECTOR).innerHTML = toHomeView();
 };
 
-const renderTrending = () => {
-  q(CONTAINER_SELECTOR).innerHTML = toTrendingView();
+const renderTrending = async () => {
+  const gifS = await loadTrendingGifS();
+  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifS);
 };
 
 const renderUploaded = () => {

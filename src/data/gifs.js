@@ -31,7 +31,7 @@
 //   return gifs;
 // };
 
-// export const getGifById = (gifId = 0) => gifs.find((m) => m.id === gifId);
+export const getGifById = (gifId = 0) => gifs.find((m) => m.id === gifId);
 
 // export const searchGifs = (title = '') => title ?
 //   gifs.filter((m) => m.title.toLowerCase().includes(title.toLowerCase())) :

@@ -10,6 +10,8 @@ export const FAVORITES = 'favorites';
 
 export const ABOUT = 'about';
 
+export const GIF_DETAILS = 'gifDetails';
+
 export const CONTAINER_SELECTOR = '#container';
 
 export const FULL_HEART = '❤';
