@@ -1,6 +1,11 @@
 import { loadUploadGif } from '../requests/request-service.js';
 import { fileValidate, q } from './helpers.js';
 
+/**
+ * Retrieves a file preview, validates the file, and initiates the upload process.
+ *
+ * @param {File} file - The File object to be previewed and uploaded.
+ */
 export const renderFilePreview = (file) => {
   const fileReader = new FileReader();
   const fileType = file.type;
@@ -10,7 +15,6 @@ export const renderFilePreview = (file) => {
     q('#dropZoon').classList.add('drop-zoon--Uploaded');
 
     q('#previewImage').style.display = 'none';
-
 
     q('#uploadedFile').classList.remove('uploaded-file--open');
     q('#uploadedFileInfo').classList.remove('uploaded-file__info--active');
@@ -40,7 +44,7 @@ export const renderFilePreview = (file) => {
 
         if (localStorage.getItem('uploadedGifs')) {
           console.log('here');
-          const uploadedArr = (JSON.parse(localStorage.getItem('uploadedGifs')));
+          const uploadedArr = JSON.parse(localStorage.getItem('uploadedGifs'));
           uploadedArr.push(id);
           localStorage.setItem('uploadedGifs', JSON.stringify(uploadedArr));
         } else {
@@ -56,4 +60,3 @@ export const renderFilePreview = (file) => {
     this;
   }
 };
-
