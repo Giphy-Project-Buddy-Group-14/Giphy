@@ -20,11 +20,9 @@ export const toSingleGifView = (gif) => `
 
 export const toGifSimple = (gif) => `
 <div class="gif">
-  <h1>${gif.title}</h1>
-  <h2>${gif.year}</h2>
-  <img src="${gif.poster}"><br>
-  <button class="view-gif-btn" data-gif-id="${gif.id}">View details</button>
+  <img id="${gif.id}" src="${gif.url}" alt="">
   ${renderFavoriteStatus(gif.id)}
+  
 </div>
 `;
 

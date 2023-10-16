@@ -1,19 +1,29 @@
-import { EMPTY_HEART, FULL_HEART } from '../common/constants.js';
-import { addFavorite, getFavorites, removeFavorite } from '../data/favorites.js';
-import { q } from './helpers.js';
 
-export const toggleFavoriteStatus = (gifId) => {
-  const favorites = getFavorites();
+import { addFavorite, removeFavorite, getFavorites } from '../data/favorites.js';
+import { q } from '../events/helpers.js'
+import { EMPTY_HEART, FULL_HEART } from '../common/constants.js'
+
+export const toggleFavoriteStatus = (gifId, gifUrl) => {
   const heartSpan = q(`span[data-gif-id="${gifId}"]`);
-  
-  if (favorites.includes(gifId)) {
-    removeFavorite(gifId);
-    heartSpan.classList.remove('active')
-    heartSpan.innerHTML = EMPTY_HEART;
-  } else {
-    addFavorite(gifId);
-    heartSpan.classList.add('active');
-    heartSpan.innerHTML = FULL_HEART;
+  if (heartSpan) { 
+    const favorites = getFavorites();
+    if (favorites.includes(gifId)) {
+      removeFavorite(gifId);
+      if (heartSpan.classList) {
+        heartSpan.classList.remove('active');
+      }
+      heartSpan.innerHTML = EMPTY_HEART;
+      const activeMenu = q('a.nav-link.active').textContent 
+      if(activeMenu === 'Favorites'){
+        heartSpan.closest('.gif').remove()
+      }
+    } else {
+      addFavorite(gifId, gifUrl);
+      if (heartSpan.classList) {
+        heartSpan.classList.add('active');
+      }
+      heartSpan.innerHTML = FULL_HEART;
+    }
   }
 };
 

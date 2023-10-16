@@ -1,21 +1,31 @@
 @import url('/styles/upload.css');
 @import url('/styles/search.css');
 @import url('/styles/upload-button.css');
+@import url('/styles/about.css');
 @import url('/styles/nav.css');
+@import url('/styles/favorite-view.css');
 
 body {
   background-color: #121212;
   color: white;
   margin: 0;
-  height: 100%;
-  padding: 0;
+  height: 100vh;
   font-family: 'Roboto', sans-serif;
+
 }
 
 #logo-text {
   font-size: 2em;
   font-weight: bolder;
+  font-family: sans-serif;
   margin-right: 1em;
+  cursor: pointer;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0px;
+  border-radius: 8px;
+  justify-content: center;
+  line-height: 0.5em;
+  padding: .5em .2em;
 }
 
 #app {

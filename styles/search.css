@@ -41,3 +41,14 @@
     right: -45px;
   }
   
+  #search-view h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: large;
+    display: flex;
+  }
+
+
+  #search-view{
+  background: #212121;
+    padding: 5%;
+  }
