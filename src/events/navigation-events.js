@@ -1,5 +1,18 @@
-import { ABOUT, CONTAINER_SELECTOR, FAVORITES, GIF_DETAILS, HOME, TRENDING, UPLOAD, UPLOADED } from '../common/constants.js';
-import { loadSingleGif, loadTrendingGifS, searchRandomGifs } from '../requests/request-service.js';
+import {
+  ABOUT,
+  CONTAINER_SELECTOR,
+  FAVORITES,
+  GIF_DETAILS,
+  HOME,
+  TRENDING,
+  UPLOAD,
+  UPLOADED,
+} from '../common/constants.js';
+import {
+  loadSingleGif,
+  loadTrendingGifS,
+  searchRandomGifs,
+} from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 import { toFavoritesView } from '../views/favorites-view.js';
 import { toHomeView } from '../views/home-view.js';
@@ -115,15 +128,17 @@ export const renderFavorites = async () => {
   const favorites = getFavorites();
 
   try {
-    const favGifs = await Promise.all(favorites.map(async (id) => await loadSingleGif(id)));
+    const favGifs = await Promise.all(
+      favorites.map(async (id) => await loadSingleGif(id))
+    );
 
-    q(CONTAINER_SELECTOR).innerHTML = favGifs.length === 0 ?
-      toRandomGifView([await searchRandomGifs()]) :
-      toFavoritesView(favGifs);
+    q(CONTAINER_SELECTOR).innerHTML =
+      favGifs.length === 0
+        ? toRandomGifView([await searchRandomGifs()])
+        : toFavoritesView(favGifs);
   } catch (error) {
     console.log(error.message);
   }
-
 };
 
 /**

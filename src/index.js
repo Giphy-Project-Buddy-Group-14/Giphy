@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const gifId = event.target.getAttribute('data-gif-id');
       toggleFavoriteStatus(gifId);
 
-      if (q('a.nav-link.active').textContent === "Favorites") {
+      if (q('a.nav-link.active').textContent === 'Favorites') {
         await renderFavorites();
       }
     }
@@ -38,8 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPage(HOME);
   });
 
-  q('#search-btn').addEventListener('click', (event) => {
-    const searchStr = q('input#search').value;
+  function searchGIFs(searchStr) {
     searchGifs(searchStr)
       .then((gifs) => {
         return toSearchView(gifs, searchStr);
@@ -52,32 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('container').innerHTML =
           '<h1>Something went wrong...</h1>';
       });
-    console.log('event.target', event.target);
+  }
+  
+  q('#search-btn').addEventListener('click', (event) => {
+    const searchStr = q('input#search').value;
+    searchGIFs(searchStr);
   });
 
   q('input#search').addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
       const searchStr = event.target.value;
-
-      searchGifs(searchStr)
-        .then((data) => {
-          const extractedFields = data.map((gif) => ({
-            id: gif.id,
-            url: gif.images.original.url,
-          }));
-          return extractedFields;
-        })
-        .then((gifs) => {
-          return toSearchView(gifs, searchStr);
-        })
-        .then((imagesHtml) => {
-          document.getElementById('container').innerHTML = imagesHtml;
-        })
-        .catch((error) => {
-          console.error(error);
-          document.getElementById('container').innerHTML =
-            '<h1>Something went wrong...</h1>';
-        });
+      searchGIFs(searchStr);
     }
   });
 
