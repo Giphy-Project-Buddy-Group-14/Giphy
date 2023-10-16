@@ -1,5 +1,10 @@
-import { gifFileTypes } from "../common/constants.js";
+import { gifFileTypes } from '../common/constants.js';
 
+/**
+ * Generates an HTML view for the upload area where users can upload GIF files.
+ *
+ * @returns {string} - The HTML content representing the upload area view.
+ */
 export const toUploadView = () => `
 <!-- Upload Area -->
 <div id="uploadArea" class="upload-area">
@@ -10,7 +15,9 @@ export const toUploadView = () => `
       File should be a GIF
       <strong class="upload-area__tooltip">
         Like
-        <span class="upload-area__tooltip-data">${[...gifFileTypes].join(', .')}</span> <!-- Data Will be Comes From Js -->
+        <span class="upload-area__tooltip-data">${[...gifFileTypes].join(
+          ', .'
+        )}</span> <!-- Data Will be Comes From Js -->
       </strong>
     </p>
   </div>

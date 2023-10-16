@@ -1,7 +1,6 @@
 import { GIF_DETAILS, HOME } from './common/constants.js';
 import { q } from './events/helpers.js';
 import { loadPage } from './events/navigation-events.js';
-// import { renderSearchItems } from './events/search-events.js';
 import { renderFilePreview } from './events/upload-events.js';
 import { searchGifs } from './requests/request-service.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
@@ -9,14 +8,10 @@ import { toSearchView } from './views/search-view.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', (event) => {
-
-
     if (event.target.getAttribute('data-gifId')) {
       const gifId = event.target.getAttribute('data-gifId');
       loadPage(GIF_DETAILS, gifId);
     }
-
-
 
     if (event.target.classList.contains('nav-link')) {
       loadPage(event.target.getAttribute('data-page'));
@@ -39,9 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
   q('#logo-text').addEventListener('click', () => {
     loadPage(HOME);
   });
-
-
-
 
   q('#search-btn').addEventListener('click', (event) => {
     const searchStr = q('input#search').value;
@@ -96,6 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
   loadPage(HOME);
 });
 
+/**
+ * Sets up event listeners for the drop zone used for uploading GIF files.
+ */
 export const addDropZoneEvents = () => {
   if (q('#dropZoon')) {
     // When (drop-zoon) has (dragover) Event

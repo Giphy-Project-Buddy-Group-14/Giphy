@@ -2,10 +2,12 @@ import { gifFileTypes } from '../common/constants.js';
 import { loadUploadGif } from '../requests/request-service.js';
 
 /**
- * Shorthand for document.querySelector
- * @param {string} selector
- * @returns {Element}
+ * Shorthand for document.querySelectorAll.
+ *
+ * @param {string} selector - The CSS selector to query the DOM.
+ * @returns {NodeListOf<Element>} - A list of elements that match the selector.
  */
+
 export const q = (selector) => document.querySelector(selector);
 
 /**
@@ -14,6 +16,12 @@ export const q = (selector) => document.querySelector(selector);
  * @returns {NodeLists<Element>}
  */
 export const qs = (selector) => document.querySelectorAll(selector);
+
+/**
+ * Set the active navigation link based on the current page.
+ *
+ * @param {string} page - The current page to set as active.
+ */
 
 export const setActiveNav = (page) => {
   const navs = qs('a.nav-link');
@@ -27,6 +35,13 @@ export const setActiveNav = (page) => {
       );
 };
 
+/**
+ * Validate the file type and size.
+ *
+ * @param {string} fileType - The type of the file.
+ * @param {number} fileSize - The size of the file in bytes.
+ * @returns {boolean} - True if the file is valid, false otherwise.
+ */
 export const fileValidate = (fileType, fileSize) => {
   const isImage = gifFileTypes.filter((type) =>
     fileType.indexOf(`image/${type}`) !== -1);
