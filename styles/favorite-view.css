@@ -1,4 +1,4 @@
-#favorites {
+/* #favorites {
   display: grid;
   place-items: center;
   font-family: 'Roboto', sans-serif;
@@ -52,4 +52,4 @@ padding: .2em .2em;
   }
   span.favorite:hover {
     color: rgb(255, 0, 150);
-  }
+  } */

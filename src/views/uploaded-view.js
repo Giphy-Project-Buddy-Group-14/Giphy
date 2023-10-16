@@ -1,4 +1,4 @@
-import { toGifSimpleForUploads } from './gif-views.js';
+import { toGifSimple } from './gif-views.js';
 
 /**
  * Generates an HTML view for displaying uploaded GIFs.
@@ -11,7 +11,7 @@ export const toUploadedView = (gifs) => `
 <h1>Your uploaded Gifs:</h1>
 <div id="gif-grid">
   ${
-    gifs.map(toGifSimpleForUploads).join('\n') ||
+    gifs.map(toGifSimple).join('\n') ||
     '<p>Upload some gifs to see them here</p>'
   }
 </div>

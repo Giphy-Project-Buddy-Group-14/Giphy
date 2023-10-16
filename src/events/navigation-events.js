@@ -1,5 +1,5 @@
-import {ABOUT, CONTAINER_SELECTOR, FAVORITES, GIF_DETAILS, HOME,  TRENDING, UPLOAD, UPLOADED} from '../common/constants.js';
-import {loadSingleGif, loadTrendingGifS} from '../requests/request-service.js';
+import { ABOUT, CONTAINER_SELECTOR, FAVORITES, GIF_DETAILS, HOME, TRENDING, UPLOAD, UPLOADED } from '../common/constants.js';
+import { loadSingleGif, loadTrendingGifS, searchRandomGifs } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 import { toFavoritesView } from '../views/favorites-view.js';
 import { toHomeView } from '../views/home-view.js';
@@ -9,6 +9,8 @@ import { toTrendingView } from '../views/trending-view.js';
 import { toUploadedView } from '../views/uploaded-view.js';
 import { toUploadView } from '../views/upload-view.js';
 import { addDropZoneEvents } from '../index.js';
+import { getFavorites } from '../data/favorites.js';
+import { toRandomGifView } from '../views/random-gif-view.js';
 
 /**
  * Loads a specific page based on the provided page and optional ID.
@@ -109,10 +111,19 @@ const renderUpload = () => {
 /**
  * Renders the Favorites page.
  */
-const renderFavorites = () => {
-  toFavoritesView().then((html) => {
-    q(CONTAINER_SELECTOR).innerHTML = html;
-  });
+export const renderFavorites = async () => {
+  const favorites = getFavorites();
+
+  try {
+    const favGifs = await Promise.all(favorites.map(async (id) => await loadSingleGif(id)));
+
+    q(CONTAINER_SELECTOR).innerHTML = favGifs.length === 0 ?
+      toRandomGifView([await searchRandomGifs()]) :
+      toFavoritesView(favGifs);
+  } catch (error) {
+    console.log(error.message);
+  }
+
 };
 
 /**

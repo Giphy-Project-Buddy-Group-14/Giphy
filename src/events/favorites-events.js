@@ -13,7 +13,7 @@ import { EMPTY_HEART, FULL_HEART } from '../common/constants.js';
  * @param {string} gifUrl - The URL of the GIF.
  */
 
-export const toggleFavoriteStatus = (gifId, gifUrl) => {
+export const toggleFavoriteStatus = (gifId) => {
   const heartSpan = q(`span[data-gif-id="${gifId}"]`);
   if (heartSpan) {
     const favorites = getFavorites();
@@ -23,12 +23,8 @@ export const toggleFavoriteStatus = (gifId, gifUrl) => {
         heartSpan.classList.remove('active');
       }
       heartSpan.innerHTML = EMPTY_HEART;
-      const activeMenu = q('a.nav-link.active').textContent;
-      if (activeMenu === 'Favorites') {
-        heartSpan.closest('.gif').remove();
-      }
     } else {
-      addFavorite(gifId, gifUrl);
+      addFavorite(gifId);
       if (heartSpan.classList) {
         heartSpan.classList.add('active');
       }

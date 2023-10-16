@@ -1,13 +1,13 @@
 import { GIF_DETAILS, HOME } from './common/constants.js';
 import { q } from './events/helpers.js';
-import { loadPage } from './events/navigation-events.js';
+import { loadPage, renderFavorites } from './events/navigation-events.js';
 import { renderFilePreview } from './events/upload-events.js';
 import { searchGifs } from './requests/request-service.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
 import { toSearchView } from './views/search-view.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.addEventListener('click', (event) => {
+  document.addEventListener('click', async (event) => {
     if (event.target.getAttribute('data-gifId')) {
       const gifId = event.target.getAttribute('data-gifId');
       loadPage(GIF_DETAILS, gifId);
@@ -19,8 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (event.target.classList.contains('favorite')) {
       const gifId = event.target.getAttribute('data-gif-id');
-      const gifUrl = q('#' + gifId).src;
-      toggleFavoriteStatus(gifId, gifUrl);
+      toggleFavoriteStatus(gifId);
+
+      if (q('a.nav-link.active').textContent === "Favorites") {
+        await renderFavorites();
+      }
     }
   });
 
@@ -38,13 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
   q('#search-btn').addEventListener('click', (event) => {
     const searchStr = q('input#search').value;
     searchGifs(searchStr)
-      .then((data) => {
-        const extractedFields = data.map((gif) => ({
-          id: gif.id,
-          url: gif.images.original.url,
-        }));
-        return extractedFields;
-      })
       .then((gifs) => {
         return toSearchView(gifs, searchStr);
       })

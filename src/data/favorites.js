@@ -4,12 +4,10 @@ let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
  * Adds a GIF to the list of favorites.
  *
  * @param {string} gifId - The ID of the GIF.
- * @param {string} gifUrl - The URL of the GIF.
  */
-export const addFavorite = (gifId, gifUrl) => {
+export const addFavorite = (gifId) => {
   if (!favorites.includes(gifId)) {
     favorites.push(gifId);
-    favorites.push(gifUrl);
     updateLocalStorage();
   }
 };
@@ -20,10 +18,7 @@ export const addFavorite = (gifId, gifUrl) => {
  * @param {string} gifId - The ID of the GIF to be removed.
  */
 export const removeFavorite = (gifId) => {
-  let indexToRemove = favorites.indexOf(gifId);
-  if (indexToRemove !== -1 && indexToRemove < favorites.length - 1) {
-    favorites.splice(indexToRemove, 2);
-  }
+  favorites = favorites.filter(id => id !== gifId);
   updateLocalStorage();
 };
 

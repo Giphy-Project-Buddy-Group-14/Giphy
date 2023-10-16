@@ -21,27 +21,28 @@ export const toSingleGifView = (gif) => `
  * @param {object} gif - The GIF to display.
  * @returns {string} - The HTML content representing the simple GIF view for uploads.
  */
-export const toGifSimpleForUploads = (gif) => `
+export const toGifSimple = (gif) => `
 <div class="gif-item" data-gifId="${gif.id}">
     <img src="${gif.images.fixed_height.url}" data-gifId="${gif.id}" />
     <div class="gif-info" data-gifId="${gif.id}">${
   (gif.user && gif.user.description) || ''
-}</div>
-  </div> 
+}
+${renderFavoriteStatus(gif.id)}</div>
+  </div>
 `;
 
-/**
- * Generates an HTML view for displaying a simple GIF with favorites status.
- *
- * @param {object} gif - The GIF to display.
- * @returns {string} - The HTML content representing the simple GIF view with favorite status.
- */
-export const toGifSimple = (gif) => `
-<div class="gif">
-  <img id="${gif.id}" src="${gif.url}" alt="">
-  ${renderFavoriteStatus(gif.id)}
-</div>
-`;
+// /**
+//  * Generates an HTML view for displaying a simple GIF with favorites status.
+//  *
+//  * @param {object} gif - The GIF to display.
+//  * @returns {string} - The HTML content representing the simple GIF view with favorite status.
+//  */
+// export const toGifSimple = (gif) => `
+// <div class="gif">
+//   <img id="${gif.id}" src="${gif.url}" alt="">
+//   ${renderFavoriteStatus(gif.id)}
+// </div>
+// `;
 
 /**
  * Generates an HTML view for displaying detailed information about a GIF.
