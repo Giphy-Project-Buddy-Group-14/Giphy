@@ -47,7 +47,7 @@ export const renderFilePreview = (file) => {
           localStorage.setItem('uploadedGifs', JSON.stringify([id]));
         }
       } catch (error) {
-        console.log(error);
+        console.log(error.message);
       }
     });
 
