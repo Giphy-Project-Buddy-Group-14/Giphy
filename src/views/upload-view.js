@@ -22,7 +22,6 @@ export const toUploadView = () => `
       <i class='bx bxs-file-image'></i>
     </span>
     <p class="drop-zoon__paragraph">Drop your file here or Click to browse</p>
-    <span id="loadingText" class="drop-zoon__loading-text">Please Wait</span>
     <img src="" alt="Preview Image" id="previewImage" class="drop-zoon__preview-image" draggable="false">
     <input type="file" id="fileInput" class="drop-zoon__file-input" accept="image/*">
   </div>
@@ -30,7 +29,7 @@ export const toUploadView = () => `
 
   <!-- File Details -->
   <div id="fileDetails" class="upload-area__file-details file-details">
-    <h3 class="file-details__title">Uploaded File</h3>
+    <h3 class="file-details__title">Uploading File</h3>
 
     <div id="uploadedFile" class="uploaded-file">
       <div class="uploaded-file__icon-container">
@@ -40,7 +39,7 @@ export const toUploadView = () => `
       </div>
 
       <div id="uploadedFileInfo" class="uploaded-file__info">
-        <span class="uploaded-file__name">Proejct 1</span>
+        <span class="uploaded-file__name">Project 1</span>
         <span class="uploaded-file__counter">0%</span>
       </div>
     </div>

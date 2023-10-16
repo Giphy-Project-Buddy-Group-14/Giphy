@@ -1,6 +1,7 @@
-import { HOME } from './common/constants.js';
+import { GIF_DETAILS, HOME } from './common/constants.js';
 import { q } from './events/helpers.js';
 import { loadPage } from './events/navigation-events.js';
+import { renderSearchItems } from './events/search-events.js';
 import { renderFilePreview } from './events/upload-events.js';
 import { searchGifs } from './requests/request-service.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
@@ -51,6 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('container').innerHTML =
           '<h1>Something went wrong...</h1>';
       });
+    console.log('event.target', event.target);
+
+    if (event.target.getAttribute('data-gifId')) {
+      const gifId = event.target.getAttribute('data-gifId');
+      loadPage(GIF_DETAILS, gifId);
+    }
   });
 
   q('input#search').addEventListener('keydown', (event) => {

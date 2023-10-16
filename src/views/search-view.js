@@ -15,7 +15,7 @@ export const toSearchView = (gifs, searchTerm) => {
       <div class="content">
         ${
           gifs.map(toGifSimple).join('\n') ||
-          '<p>Add samo GIFs to favorites</p>'
+          '<p>Add some GIFs to favorites</p>'
         }
       </div>
     </div>
