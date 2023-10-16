@@ -19,16 +19,18 @@ export const toSingleGifView = (gif) => `
 `;
 // Тука трябва да се направят корекции понеже е за филмите
 
+export const toGifSimpleForUploads = (gif) => `
+<div class="gif-item" data-gifId="${gif.id}">
+    <img src="${gif.images.fixed_height.url}" data-gifId="${gif.id}" />
+    <div class="gif-info" data-gifId="${gif.id}">${gif.user && gif.user.description || ''}</div>
+  </div> 
+`;
+
 export const toGifSimple = (gif) => `
 <div class="gif">
   <img id="${gif.id}" src="${gif.url}" alt="">
   ${renderFavoriteStatus(gif.id)}
-  
 </div>
-<div class="gif-item" data-gifId="${gif.id}">
-    <img src="${gif.images.fixed_height.url}" data-gifId="${gif.id}" />
-    <div class="gif-info" data-gifId="${gif.id}">${gif.user && gif.user.description || ''}</div>
-  </div>
 `;
 
 const toGifDetailed = (gif) => `

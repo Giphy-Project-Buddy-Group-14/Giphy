@@ -1,6 +1,6 @@
 import { API_KEY } from '../common/api_key.js';
 import { TIHOMIR_API_KEY, UPLOAD_URL } from '../common/constants.js';
-import { getGifsGeneralInfo, getGifById, searchGifs } from '../data/gifs.js';
+import { getGifsGeneralInfo, getGifById } from '../data/gifs.js';
 import { API_URL, SVILENA_API_KEY } from "../common/constants.js";
 import { q } from '../events/helpers.js';
 
@@ -59,22 +59,22 @@ export const searchRandomGifs = async () => {
   }
 };
 
-export const loadSingleGif = async (gifId) => {
-  try {
-    const response = await fetch(
-      `${GIPHY_API_BASE_URL}/${gifId}?api_key=${API_KEY}`
-    );
-    if (response.ok) {
-      const data = await response.json();
-      return data.data;
-    } else {
-      throw new Error('Failed to load the GIF');
-    }
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-};
+// export const loadSingleGif = async (gifId) => {
+//   try {
+//     const response = await fetch(
+//       `${GIPHY_API_BASE_URL}/${gifId}?api_key=${API_KEY}`
+//     );
+//     if (response.ok) {
+//       const data = await response.json();
+//       return data.data;
+//     } else {
+//       throw new Error('Failed to load the GIF');
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     return null;
+//   }
+// };
 // Тука трябва да се ползват fetch() methods.
 export const loadGifs = (categoryId = null) => {
   const gifs = getGifsGeneralInfo(categoryId);
@@ -91,20 +91,20 @@ export const loadTrendingGifS = () => {
     });
 };
 
-// export const loadSingleGif = async (id) => {
-//   const gif = await fetch(`${API_URL}/${id}?api_key=${SVILENA_API_KEY}`)
-//     .then(response => response.json())
-//     .then(response => response.data)
-//     .catch(console.error);
+export const loadSingleGif = async (id) => {
+  const gif = await fetch(`${API_URL}/${id}?api_key=${SVILENA_API_KEY}`)
+    .then(response => response.json())
+    .then(response => response.data)
+    .catch(console.error);
 
-//   return gif;
-// };
-
-export const loadSearchGifs = (searchTerm = '') => {
-  const gifs = searchGifs(searchTerm);
-
-  return gifs;
+  return gif;
 };
+
+// export const loadSearchGifs = (searchTerm = '') => {
+//   const gifs = searchGifs(searchTerm);
+
+//   return gifs;
+// };
 
 
 export const loadUploadGif = (file) => {

@@ -33,9 +33,9 @@ export const getGifsFullInfo = (categoryId = null) => {
 
 export const getGifById = (gifId = 0) => gifs.find((m) => m.id === gifId);
 
-export const searchGifs = (title = '') => title ?
-  gifs.filter((m) => m.title.toLowerCase().includes(title.toLowerCase())) :
-  gifs;
+// export const searchGifs = (title = '') => title ?
+//   gifs.filter((m) => m.title.toLowerCase().includes(title.toLowerCase())) :
+//   gifs;
 
 export const getCategory = (categoryId = null) => {
   return categories.find((c) => c.id === categoryId) || null;
