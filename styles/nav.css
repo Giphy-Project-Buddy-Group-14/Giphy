@@ -1,9 +1,10 @@
 nav {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
-nav>a {
+nav > a {
     font-size: larger;
     font-weight: bolder;
     text-decoration: none;
@@ -15,21 +16,16 @@ nav>a {
     padding-right: 0.5em;
 }
 
-nav>a::after {
+nav > a::after {
     content: '';
     position: absolute;
     left: 0;
     bottom: -2px;
-    /* Adjust the position to control the distance between text and line */
     width: 120%;
     height: 2px;
-    /* Adjust the line thickness as needed */
-    background: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
-    /* Adjust gradient colors */
+    background: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
 }
 
-/* Add a background gradient change on hover */
-nav>a:hover {
-    background: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
-    /* Adjust gradient colors */
+nav > a:hover {
+    background: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
 }

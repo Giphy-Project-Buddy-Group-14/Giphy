@@ -1,6 +1,5 @@
 import { API_KEY } from '../common/api_key.js';
 import { TIHOMIR_API_KEY, UPLOAD_URL } from '../common/constants.js';
-import { getGifsGeneralInfo } from '../data/gifs.js';
 import { API_URL, SVILENA_API_KEY } from '../common/constants.js';
 import { q } from '../events/helpers.js';
 

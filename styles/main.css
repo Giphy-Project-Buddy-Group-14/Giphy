@@ -50,11 +50,13 @@ footer {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  width: 100%;
+  justify-content: center;
 }
 
 #gif-grid .gif-item {
-  width: 200px;
-  height: 200px;
+  width: 320px;
+  height: 320px;  
   display: flex;
   justify-content: center;
   overflow: hidden;

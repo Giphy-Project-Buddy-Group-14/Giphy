@@ -1,22 +1,6 @@
 import { renderFavoriteStatus } from '../events/favorites-events.js';
 
 /**
- * Generates an HTML view for displaying a list of GIFs from a specific category.
- *
- * @param {object} category - The category for which to display GIFs.
- * @param {Array} gifs - An array of GIFs to display.
- * @returns {string} - The HTML content representing the category's GIFs view.
- */
-export const toGifFromCategoryView = (category, gifs) => `
-<div id="gifs">
-  <h1>${category.name} gifs:</h1>
-  <div class="content">
-    ${gifs.map(toGifSimple).join('\n')}
-  </div>
-</div>
-`;
-
-/**
  * Generates an HTML view for displaying a single GIF.
  *
  * @param {object} gif - The GIF to display.
