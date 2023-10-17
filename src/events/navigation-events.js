@@ -67,9 +67,10 @@ export const loadPage = (page = '', id = null) => {
 };
 
 /**
- * Renders the GIFs details ot the page.
+ * Renders details of a specific GIF in the specified container.
  *
- * @param {string|null} id - ID of the GIF to be displayed.
+ * @async
+ * @param {string|null} id - The ID of the GIF to load details for.
  */
 export const renderGifDetails = async (id = null) => {
   q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
@@ -86,6 +87,7 @@ const renderHome = () => {
 
 /**
  * Renders the Trending page.
+ * @async
  */
 const renderTrending = async () => {
   q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
@@ -123,6 +125,8 @@ const renderUpload = () => {
 
 /**
  * Renders the Favorites page.
+ * 
+ * @async
  */
 export const renderFavorites = async () => {
   const favorites = getFavorites();

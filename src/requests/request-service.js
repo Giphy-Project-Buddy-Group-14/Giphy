@@ -8,6 +8,7 @@ const GIPHY_API_BASE_URL = 'https://api.giphy.com/v1/gifs';
 /**
  * Loads trending GIFs from Giphy API.
  *
+ * @async
  * @returns {Promise</Array>} - A Promise that resolves to an array of trending GIFs.
  */
 export const loadTrendingGifs = async () => {
@@ -15,10 +16,8 @@ export const loadTrendingGifs = async () => {
     const response = await fetch(
       `${GIPHY_API_BASE_URL}/trending?api_key=${API_KEY}`
     );
-
     if (response.ok) {
       const data = await response.json();
-
       return data.data;
     } else {
       throw new Error('Failed to load trending GIFs');
@@ -32,6 +31,7 @@ export const loadTrendingGifs = async () => {
 /**
  * Search for GIFs using the Giphy API.
  *
+ * @async
  * @param {string} searchTerm - The search term to look for GIFs.
  * @returns {Promise<Array>} - a promise that resolves to an array of matching GIFs.
  */
@@ -55,6 +55,7 @@ export const searchGifs = async (searchTerm) => {
 /**
  * Searches for a random GIF using the Giphy API.
  *
+ * @async
  * @returns {Promise<Array>} - A promise that resolves to an array containing a single random GIF.
  */
 export const searchRandomGifs = async () => {
@@ -94,6 +95,7 @@ export const loadTrendingGifS = () => {
 /**
  * Loads a single GIF by ID.
  *
+ * @async
  * @param {string} id - The ID of the GIF to load.
  * @returns {Promise<Object|null>} - A promise that resolves to the loaded GIF or null if not found.
  */
