@@ -24,7 +24,6 @@ export const loadTrendingGifs = async () => {
     }
   } catch (error) {
     console.error(error);
-    return [];
   }
 };
 
@@ -48,7 +47,6 @@ export const searchGifs = async (searchTerm) => {
     }
   } catch (error) {
     console.error(error);
-    return [];
   }
 };
 
@@ -71,7 +69,6 @@ export const searchRandomGifs = async () => {
     }
   } catch (error) {
     console.error(error);
-    return [];
   }
 };
 
@@ -80,16 +77,14 @@ export const searchRandomGifs = async () => {
  *
  * @returns {Promise<Array>} - A promise that resolves to an array to trending GIFs.
  */
-export const loadTrendingGifS = () => {
-  const trendingGifS = fetch(
-    `${API_URL}/trending?api_key=${SVILENA_API_KEY}&limit=50`
-  );
-  return trendingGifS
-    .then((response) => response.json())
-    .then((response) => response.data)
-    .catch((error) => {
-      console.error(error);
-    });
+export const loadTrendingGifS = async () => {
+  try {
+    const response = await fetch(`${API_URL}/trending?api_key=${SVILENA_API_KEY}&limit=50`);
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 /**
@@ -100,12 +95,13 @@ export const loadTrendingGifS = () => {
  * @returns {Promise<Object|null>} - A promise that resolves to the loaded GIF or null if not found.
  */
 export const loadSingleGif = async (id) => {
-  const gif = await fetch(`${API_URL}/${id}?api_key=${SVILENA_API_KEY}`)
-    .then((response) => response.json())
-    .then((response) => response.data)
-    .catch(console.error);
-
-  return gif;
+  try {
+    const response = await fetch(`${API_URL}/${id}?api_key=${SVILENA_API_KEY}`);
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 /**

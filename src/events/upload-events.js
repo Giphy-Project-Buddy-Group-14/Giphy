@@ -39,11 +39,9 @@ export const renderFilePreview = (file) => {
       uploadedFileName.innerHTML = file.name;
       try {
         const response = await loadUploadGif(file);
-        console.log(response);
         const id = JSON.parse(response).data.id;
 
         if (localStorage.getItem('uploadedGifs')) {
-          console.log('here');
           const uploadedArr = JSON.parse(localStorage.getItem('uploadedGifs'));
           uploadedArr.push(id);
           localStorage.setItem('uploadedGifs', JSON.stringify(uploadedArr));

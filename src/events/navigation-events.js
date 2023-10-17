@@ -111,7 +111,7 @@ const renderUploaded = async () => {
       }
     })
   );
-  console.log(gifs);
+
   q(CONTAINER_SELECTOR).innerHTML = toUploadedView(gifs);
 };
 
@@ -141,7 +141,7 @@ export const renderFavorites = async () => {
         ? toRandomGifView([await searchRandomGifs()])
         : toFavoritesView(favGifs);
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 };
 

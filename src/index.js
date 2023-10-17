@@ -38,19 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPage(HOME);
   });
 
-  function searchGIFs(searchStr) {
-    searchGifs(searchStr)
-      .then((gifs) => {
-        return toSearchView(gifs, searchStr);
-      })
-      .then((imagesHtml) => {
-        document.getElementById('container').innerHTML = imagesHtml;
-      })
-      .catch((error) => {
-        console.error(error);
-        document.getElementById('container').innerHTML =
-          '<h1>Something went wrong...</h1>';
-      });
+  async function searchGIFs(searchStr) {
+    try {
+      const gifs = await searchGifs(searchStr);
+      const imagesHtml = await toSearchView(gifs, searchStr);
+      document.getElementById('container').innerHTML = imagesHtml;
+    } catch (error) {
+      console.error(error);
+      document.getElementById('container').innerHTML = '<h1>Something went wrong...</h1>';
+    }
   }
   
   q('#search-btn').addEventListener('click', (event) => {
