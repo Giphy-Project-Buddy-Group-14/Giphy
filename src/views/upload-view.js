@@ -30,7 +30,7 @@ export const toUploadView = () => `
     </span>
     <p class="drop-zoon__paragraph">Drop your file here or Click to browse</p>
     <img src="" alt="Preview Image" id="previewImage" class="drop-zoon__preview-image" draggable="false">
-    <input type="file" id="fileInput" class="drop-zoon__file-input" accept="image/*">
+    <input type="file" id="fileInput" class="drop-zoon__file-input" accept="image/*" multiple>
   </div>
   <!-- End Drop Zoon -->
 

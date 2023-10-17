@@ -40,19 +40,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function searchGIFs(searchStr) {
     searchGifs(searchStr)
-      .then((gifs) => {
-        return toSearchView(gifs, searchStr);
-      })
-      .then((imagesHtml) => {
-        document.getElementById('container').innerHTML = imagesHtml;
-      })
-      .catch((error) => {
-        console.error(error);
-        document.getElementById('container').innerHTML =
+        .then((gifs) => {
+          return toSearchView(gifs, searchStr);
+        })
+        .then((imagesHtml) => {
+          document.getElementById('container').innerHTML = imagesHtml;
+        })
+        .catch((error) => {
+          console.error(error);
+          document.getElementById('container').innerHTML =
           '<h1>Something went wrong...</h1>';
-      });
+        });
   }
-  
+
   q('#search-btn').addEventListener('click', (event) => {
     const searchStr = q('input#search').value;
     searchGIFs(searchStr);
