@@ -8,6 +8,7 @@ const GIPHY_API_BASE_URL = 'https://api.giphy.com/v1/gifs';
 /**
  * Loads trending GIFs from Giphy API.
  *
+ * @async
  * @returns {Promise</Array>} - A Promise that resolves to an array of trending GIFs.
  */
 export const loadTrendingGifs = async () => {
@@ -15,23 +16,21 @@ export const loadTrendingGifs = async () => {
     const response = await fetch(
       `${GIPHY_API_BASE_URL}/trending?api_key=${API_KEY}`
     );
-
     if (response.ok) {
       const data = await response.json();
-
       return data.data;
     } else {
       throw new Error('Failed to load trending GIFs');
     }
   } catch (error) {
     console.error(error);
-    return [];
   }
 };
 
 /**
  * Search for GIFs using the Giphy API.
  *
+ * @async
  * @param {string} searchTerm - The search term to look for GIFs.
  * @returns {Promise<Array>} - a promise that resolves to an array of matching GIFs.
  */
@@ -48,13 +47,13 @@ export const searchGifs = async (searchTerm) => {
     }
   } catch (error) {
     console.error(error);
-    return [];
   }
 };
 
 /**
  * Searches for a random GIF using the Giphy API.
  *
+ * @async
  * @returns {Promise<Array>} - A promise that resolves to an array containing a single random GIF.
  */
 export const searchRandomGifs = async () => {
@@ -70,7 +69,6 @@ export const searchRandomGifs = async () => {
     }
   } catch (error) {
     console.error(error);
-    return [];
   }
 };
 
@@ -79,31 +77,48 @@ export const searchRandomGifs = async () => {
  *
  * @returns {Promise<Array>} - A promise that resolves to an array to trending GIFs.
  */
-export const loadTrendingGifS = () => {
-  const trendingGifS = fetch(
-    `${API_URL}/trending?api_key=${SVILENA_API_KEY}&limit=50`
-  );
-  return trendingGifS
-    .then((response) => response.json())
-    .then((response) => response.data)
-    .catch((error) => {
-      console.error(error);
-    });
+export const loadTrendingGifS = async () => {
+  try {
+    const response = await fetch(`${API_URL}/trending?api_key=${SVILENA_API_KEY}&limit=50`);
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error(error);
+  }
 };
+
+/**
+ * Loads kitty GIFs from an external data source.
+ *
+ * @returns {Promise<Array>} - A promise that resolves to an array to trending GIFs.
+ */
+export const loadKittyGifS = async () => {
+  try {
+    const response = await fetch(`${GIPHY_API_BASE_URL}/search?q=cats&api_key=${API_KEY}&limit=50`);
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
 
 /**
  * Loads a single GIF by ID.
  *
+ * @async
  * @param {string} id - The ID of the GIF to load.
  * @returns {Promise<Object|null>} - A promise that resolves to the loaded GIF or null if not found.
  */
 export const loadSingleGif = async (id) => {
-  const gif = await fetch(`${API_URL}/${id}?api_key=${SVILENA_API_KEY}`)
-    .then((response) => response.json())
-    .then((response) => response.data)
-    .catch(console.error);
-
-  return gif;
+  try {
+    const response = await fetch(`${API_URL}/${id}?api_key=${SVILENA_API_KEY}`);
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 /**

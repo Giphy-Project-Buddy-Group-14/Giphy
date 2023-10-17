@@ -12,6 +12,7 @@ import {
   loadSingleGif,
   loadTrendingGifS,
   searchRandomGifs,
+  loadKittyGifS,
 } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 import { toFavoritesView } from '../views/favorites-view.js';
@@ -67,9 +68,10 @@ export const loadPage = (page = '', id = null) => {
 };
 
 /**
- * Renders the GIFs details ot the page.
+ * Renders details of a specific GIF in the specified container.
  *
- * @param {string|null} id - ID of the GIF to be displayed.
+ * @async
+ * @param {string|null} id - The ID of the GIF to load details for.
  */
 export const renderGifDetails = async (id = null) => {
   q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
@@ -80,12 +82,15 @@ export const renderGifDetails = async (id = null) => {
 /**
  * Renders the Home page.
  */
-const renderHome = () => {
-  q(CONTAINER_SELECTOR).innerHTML = toHomeView();
+const renderHome = async () => {
+  q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
+  const gifS = await loadKittyGifS();
+  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifS);
 };
 
 /**
  * Renders the Trending page.
+ * @async
  */
 const renderTrending = async () => {
   q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
@@ -109,7 +114,7 @@ const renderUploaded = async () => {
       }
     })
   );
-  console.log(gifs);
+
   q(CONTAINER_SELECTOR).innerHTML = toUploadedView(gifs);
 };
 
@@ -123,6 +128,8 @@ const renderUpload = () => {
 
 /**
  * Renders the Favorites page.
+ * 
+ * @async
  */
 export const renderFavorites = async () => {
   const favorites = getFavorites();
@@ -137,7 +144,7 @@ export const renderFavorites = async () => {
         ? toRandomGifView([await searchRandomGifs()])
         : toFavoritesView(favGifs);
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 };
 
