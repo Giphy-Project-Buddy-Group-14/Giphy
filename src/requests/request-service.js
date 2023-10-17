@@ -88,6 +88,23 @@ export const loadTrendingGifS = async () => {
 };
 
 /**
+ * Loads kitty GIFs from an external data source.
+ *
+ * @returns {Promise<Array>} - A promise that resolves to an array to trending GIFs.
+ */
+export const loadKittyGifS = async () => {
+  try {
+    const response = await fetch(`${GIPHY_API_BASE_URL}/search?q=cats&api_key=${API_KEY}&limit=50`);
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
+/**
  * Loads a single GIF by ID.
  *
  * @async

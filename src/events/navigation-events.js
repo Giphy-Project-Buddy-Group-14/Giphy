@@ -12,6 +12,7 @@ import {
   loadSingleGif,
   loadTrendingGifS,
   searchRandomGifs,
+  loadKittyGifS,
 } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 import { toFavoritesView } from '../views/favorites-view.js';
@@ -81,8 +82,10 @@ export const renderGifDetails = async (id = null) => {
 /**
  * Renders the Home page.
  */
-const renderHome = () => {
-  q(CONTAINER_SELECTOR).innerHTML = toHomeView();
+const renderHome = async () => {
+  q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
+  const gifS = await loadKittyGifS();
+  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifS);
 };
 
 /**

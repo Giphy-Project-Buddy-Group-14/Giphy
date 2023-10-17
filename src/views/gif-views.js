@@ -24,11 +24,11 @@ export const toSingleGifView = (gif) => `
 export const toGifSimple = (gif) => `
 <div class="gif-item" data-gifId="${gif.id}">
     <img src="${gif.images.fixed_height.url}" data-gifId="${gif.id}" />
-    <div class="gif-info" data-gifId="${gif.id}">${
-  (gif.user && gif.user.description) || ''
-}
-${renderFavoriteStatus(gif.id)}</div>
-  </div>
+    <div class="gif-info" data-gifId="${gif.id}">
+      <div class="gif-info-description">${(gif.user && gif.user.description) || ''}</div>
+    </div>
+    <div class="gif-info-heart">${renderFavoriteStatus(gif.id)}</div>
+</div>
 `;
 
 /**
@@ -43,9 +43,8 @@ const toGifDetailed = (gif) => `
     <img src="${gif.images.original.url}">
   </div>
   <div class="gif-info">
-  ${
-    gif.user
-      ? `
+  ${gif.user
+    ? `
     <p><img src="${gif.user.avatar_url}" width="50" hight="50"/></p>
     <p>User: ${gif.user.display_name}</p>
     <p>Description: ${gif.user.description}</p>
@@ -53,7 +52,7 @@ const toGifDetailed = (gif) => `
     <p>Profile Instagram: ${gif.user.instagram_url}</p>
     <p>Rating: ${gif.user.rating}</p>
     `
-      : ''
+    : ''
   }
   </div>
 </div>
