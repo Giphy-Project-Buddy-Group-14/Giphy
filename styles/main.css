@@ -108,7 +108,13 @@ footer {
   right: 0;
   padding: 10px;
   font-size: 2rem;
-  color: rgb(255, 0, 255);
+  color: rgb(255, 0, 140);
+  width: 30px;
+  height: 30px;
+}
+
+#gif-grid .gif-info-heart svg {
+  pointer-events: none;
 }
 
 #gif-grid .gif-item:hover {
