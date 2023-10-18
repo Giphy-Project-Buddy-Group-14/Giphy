@@ -25,7 +25,8 @@ export const toAboutView = () => `
           <div class="name">Svilena Slavev</div>
         </div>
         <div class="description"S>
-        I like long walks on the beach, JavaScript and HTML. CSS ... not so much!
+        I like long walks in the forest, JavaScript and HTML. CSS ... not so much! 
+        ps. "You should always know where your towel is!"
         </div>
       </div>
 
