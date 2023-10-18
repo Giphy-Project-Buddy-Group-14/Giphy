@@ -14,9 +14,9 @@ export const toSearchView = (gifs, searchTerm) => {
       <h1>GIFs found for "${searchTerm}"</h1>
       <div id="gif-grid">
         ${
-          gifs.map(toGifSimple).join('\n') ||
+  gifs.map(toGifSimple).join('\n') ||
           '<p>Add some GIFs to favorites</p>'
-        }
+}
       </div>
     </div>
   `;

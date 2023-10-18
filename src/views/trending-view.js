@@ -5,7 +5,7 @@ import {
 /**
  * Generates an HTML view for displaying a list of trending GIFs.
  *
- * @param {Array} gifS - An array of GIFs to display in the trending view.
+ * @param {Array} gifs - An array of GIFs to display in the trending view.
  * @returns {string} - The HTML content representing the trending GIFs view.
  */
 export const toTrendingView = (gifs) => `
