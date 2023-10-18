@@ -97,7 +97,6 @@ export const renderHome = async (force) => {
  * @async
  */
 const renderTrending = async () => {
-
   q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
   const gifS = await loadTrendingGifS();
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifS);
@@ -107,17 +106,18 @@ const renderTrending = async () => {
  * Renders the Uploaded page
  */
 export const renderUploaded = async () => {
+  // eslint-disable-next-line no-undef
   const uploadedArr = JSON.parse(localStorage.getItem('uploadedGifs')) || [];
 
   const gifs = await Promise.all(
-    uploadedArr.map(async (id) => {
-      try {
-        return await loadSingleGif(id);
-      } catch (error) {
-        console.error(error.message);
-        return null;
-      }
-    }),
+      uploadedArr.map(async (id) => {
+        try {
+          return await loadSingleGif(id);
+        } catch (error) {
+          console.error(error.message);
+          return null;
+        }
+      }),
   );
 
   q(CONTAINER_SELECTOR).innerHTML = toUploadedView(gifs);
@@ -141,7 +141,7 @@ export const renderFavorites = async () => {
 
   try {
     const favGifs = await Promise.all(
-      favorites.map(async (id) => await loadSingleGif(id)),
+        favorites.map(async (id) => await loadSingleGif(id)),
     );
 
     q(CONTAINER_SELECTOR).innerHTML =

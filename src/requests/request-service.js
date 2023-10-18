@@ -3,6 +3,7 @@ import { API_URL } from '../common/constants.js';
 import { q } from '../events/helpers.js';
 import { UPLOAD_URL } from '../common/constants.js';
 
+
 const GIPHY_API_BASE_URL = 'https://api.giphy.com/v1/gifs';
 
 /**
@@ -11,19 +12,20 @@ const GIPHY_API_BASE_URL = 'https://api.giphy.com/v1/gifs';
  * @async
  * @returns {Promise</Array>} - A Promise that resolves to an array of trending GIFs.
  */
+
 export const loadTrendingGifs = async () => {
   try {
     const response = await fetch(
-      `${GIPHY_API_BASE_URL}/trending?api_key=${API_KEY}&rating=g`,
+        `${GIPHY_API_BASE_URL}/trending?api_key=${API_KEY}&rating=g`,
     );
     if (response.ok) {
       const data = await response.json();
       return data.data;
     }
-    throw new Error('Failed to load trending GIFs');
   } catch (error) {
     console.error(error);
   }
+  return [];
 };
 
 /**
@@ -36,8 +38,8 @@ export const loadTrendingGifs = async () => {
 export const searchGifs = async (searchTerm) => {
   try {
     const response = await fetch(
-      // eslint-disable-next-line max-len
-      `${GIPHY_API_BASE_URL}/search?q=${searchTerm}&api_key=${API_KEY}&limit=10&rating=g`,
+        // eslint-disable-next-line max-len
+        `${GIPHY_API_BASE_URL}/search?q=${searchTerm}&api_key=${API_KEY}&limit=10&rating=g`,
     );
     if (response.ok) {
       const data = await response.json();
@@ -47,6 +49,7 @@ export const searchGifs = async (searchTerm) => {
   } catch (error) {
     console.error(error);
   }
+  return [];
 };
 
 /**
@@ -58,7 +61,7 @@ export const searchGifs = async (searchTerm) => {
 export const searchRandomGifs = async () => {
   try {
     const response = await fetch(
-      `${GIPHY_API_BASE_URL}/random?api_key=${API_KEY}&rating=g`,
+        `${GIPHY_API_BASE_URL}/random?api_key=${API_KEY}&rating=g`,
     );
     if (response.ok) {
       const data = await response.json();
@@ -68,6 +71,7 @@ export const searchRandomGifs = async () => {
   } catch (error) {
     console.error(error);
   }
+  return [];
 };
 
 /**
@@ -84,6 +88,7 @@ export const loadTrendingGifS = async () => {
   } catch (error) {
     console.error(error);
   }
+  return [];
 };
 
 /**
@@ -98,6 +103,7 @@ export const loadKittyGifS = async (limit, offset, forceLoadMore) => {
   }
 
   try {
+    // eslint-disable-next-line max-len
     const response = await fetch(`${GIPHY_API_BASE_URL}/search?q=cats&api_key=${API_KEY}&limit=${limit}&offset=${offset}&rating=g`);
     const data = await response.json();
 
@@ -106,6 +112,7 @@ export const loadKittyGifS = async (limit, offset, forceLoadMore) => {
   } catch (error) {
     console.error(error);
   }
+  return [];
 };
 
 /**
@@ -123,6 +130,7 @@ export const loadSingleGif = async (id) => {
   } catch (error) {
     console.error(error);
   }
+  return [];
 };
 
 /**
@@ -136,6 +144,7 @@ export const loadUploadGif = (file) => {
     const formContent = new FormData();
     formContent.append('file', file);
 
+    // eslint-disable-next-line no-undef
     const xhr = new XMLHttpRequest();
 
     const uploadedFileCounter = q('.uploaded-file__counter');
@@ -143,7 +152,7 @@ export const loadUploadGif = (file) => {
 
     xhr.upload.addEventListener('progress', (event) => {
       uploadedFileCounter.innerHTML = `${Math.round(
-        (event.loaded / event.total) * 99,
+          (event.loaded / event.total) * 99,
       )}%`;
     });
 

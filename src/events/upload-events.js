@@ -8,6 +8,7 @@ import { renderUploaded } from './navigation-events.js';
  * @param {File} file - The File object to be previewed and uploaded.
  */
 export const renderFilePreview = (file) => {
+  // eslint-disable-next-line no-undef
   const fileReader = new FileReader();
   const fileType = file.type;
   const fileSize = file.size;
@@ -42,11 +43,15 @@ export const renderFilePreview = (file) => {
         const response = await loadUploadGif(file);
         const id = JSON.parse(response).data.id;
 
+        // eslint-disable-next-line no-undef
         if (localStorage.getItem('uploadedGifs')) {
+          // eslint-disable-next-line no-undef
           const uploadedArr = JSON.parse(localStorage.getItem('uploadedGifs'));
           uploadedArr.push(id);
+          // eslint-disable-next-line no-undef
           localStorage.setItem('uploadedGifs', JSON.stringify(uploadedArr));
         } else {
+          // eslint-disable-next-line no-undef
           localStorage.setItem('uploadedGifs', JSON.stringify([id]));
         }
 
@@ -57,7 +62,5 @@ export const renderFilePreview = (file) => {
     });
 
     fileReader.readAsDataURL(file);
-  } else {
-    this;
   }
 };

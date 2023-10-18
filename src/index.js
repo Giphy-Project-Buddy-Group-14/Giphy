@@ -6,7 +6,9 @@ import { searchGifs } from './requests/request-service.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
 import { toSearchView } from './views/search-view.js';
 
+// eslint-disable-next-line no-undef
 document.addEventListener('DOMContentLoaded', () => {
+  // eslint-disable-next-line no-undef
   document.addEventListener('click', async (event) => {
     if (event.target.getAttribute('data-gifId')) {
       const gifId = event.target.getAttribute('data-gifId');
@@ -29,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.target.id === 'load-more-button-next') {
       renderHome(true);
     }
-
   });
 
   q('input#search').addEventListener('click', (event) => {
@@ -47,12 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const gifs = await searchGifs(searchStr);
       const imagesHtml = await toSearchView(gifs, searchStr);
+      // eslint-disable-next-line no-undef
       document.getElementById('container').innerHTML = imagesHtml;
     } catch (error) {
       console.error(error);
+      // eslint-disable-next-line no-undef
       document.getElementById('container').innerHTML = '<h1>Something went wrong...</h1>';
     }
-  }
+  };
 
   q('#search-btn').addEventListener('click', (event) => {
     const searchStr = q('input#search').value;
