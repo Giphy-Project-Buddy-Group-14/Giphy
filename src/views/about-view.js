@@ -17,11 +17,12 @@ export const toAboutView = () => `
     <div class="cards">
       <div class="card">
         <div class="photo">
-          <img src="./images/bg.png" width="400" height="200" />
-          <div class="name">John Smith</div>
+          <img src="./images/tihomir.jpg" width="400" height="200" />
+          <div class="name">Tihomir Nikolov</div>
         </div>
-        <div class="description"S>
-         Lorem lipsum dolor sit ement, lorem lipsum dolor sit ement, lorem lipsum dolor sit ement ...
+        <div class="description">
+        Software Engineer who thrives on the perfect blend of work and play, 
+        relishing quality time with friends.
         </div>
       </div>
 
