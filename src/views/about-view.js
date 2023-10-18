@@ -25,7 +25,7 @@ export const toAboutView = () => `
           <div class="name">Svilena Slavev</div>
         </div>
         <div class="description"S>
-        Lorem lipsum dolor sit ement, lorem lipsum dolor sit ement, lorem lipsum dolor sit ement ...
+        I live long walks on the beach, JavaScript and HTML. CSS ... not so much!
         </div>
       </div>
 
