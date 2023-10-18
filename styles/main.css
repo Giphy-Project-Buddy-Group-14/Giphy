@@ -4,7 +4,6 @@
 @import url('/styles/about.css');
 @import url('/styles/nav.css');
 @import url('/styles/cards.css');
-@import url('/styles/favorite-view.css');
 
 body {
   background-color: #121212;
@@ -16,7 +15,7 @@ body {
 
   background: url('../images/bg.png');
   background-size: cover;
-  backdrop-filter: brightness(0.20);
+  backdrop-filter: brightness(0.05);
 }
 
 #logo-text {
@@ -85,7 +84,7 @@ footer {
 
 #gif-grid .gif-item img {
   transition: scale 0.2s, opacity 0.2s, box-shadow 0.5s;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 #gif-grid .gif-info {

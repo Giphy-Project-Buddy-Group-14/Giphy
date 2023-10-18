@@ -1,6 +1,6 @@
 import { GIF_DETAILS, HOME } from './common/constants.js';
 import { q } from './events/helpers.js';
-import { loadPage, renderFavorites } from './events/navigation-events.js';
+import { loadPage, renderFavorites, renderHome } from './events/navigation-events.js';
 import { renderFilePreview } from './events/upload-events.js';
 import { searchGifs } from './requests/request-service.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
         await renderFavorites();
       }
     }
+
+    if(event.target.id === 'load-more-button-next') {
+      renderHome()
+    }
+    
   });
 
   q('input#search').addEventListener('click', (event) => {

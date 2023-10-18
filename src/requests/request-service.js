@@ -92,17 +92,19 @@ export const loadTrendingGifS = async () => {
  *
  * @returns {Promise<Array>} - A promise that resolves to an array to trending GIFs.
  */
-export const loadKittyGifS = async () => {
+let loadedKittens = [];
+export const loadKittyGifS = async (limit, offset) => {
   try {
-    const response = await fetch(`${GIPHY_API_BASE_URL}/search?q=cats&api_key=${API_KEY}&limit=50`);
+    const response = await fetch(`${GIPHY_API_BASE_URL}/search?q=cats&api_key=${API_KEY}&limit=${limit}&offset=${offset}`);
     const data = await response.json();
-    return data.data;
+    console.log(data.data)
+    
+    loadedKittens = loadedKittens.concat(data.data)
+    return loadedKittens;
   } catch (error) {
     console.error(error);
   }
 };
-
-
 
 /**
  * Loads a single GIF by ID.

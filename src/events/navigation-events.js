@@ -4,6 +4,7 @@ import {
   FAVORITES,
   GIF_DETAILS,
   HOME,
+  ITEMS_PER_LOAD,
   TRENDING,
   UPLOAD,
   UPLOADED,
@@ -82,10 +83,19 @@ export const renderGifDetails = async (id = null) => {
 /**
  * Renders the Home page.
  */
-const renderHome = async () => {
+let offset = 0;
+export const renderHome = async () => {
   q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
-  const gifS = await loadKittyGifS();
+  const gifS = await loadKittyGifS(ITEMS_PER_LOAD, offset);
+  offset += ITEMS_PER_LOAD;
+  
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifS);
+  // const loadMoreButton = q('#load-more-button');
+  // if(gifS.length < ITEMS_PER_LOAD) {
+  //   loadMoreButton.style.display = 'none';
+  // } else {
+  //   loadMoreButton.style.display = 'block';
+  // }
 };
 
 /**
@@ -93,6 +103,7 @@ const renderHome = async () => {
  * @async
  */
 const renderTrending = async () => {
+  
   q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
   const gifS = await loadTrendingGifS();
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifS);

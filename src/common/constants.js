@@ -40,3 +40,5 @@ export const gifFileTypes = [
 export const API_URL = 'https://api.giphy.com/v1/gifs';
 
 export const SVILENA_API_KEY = '0hiGwSU9Q4sMVAhP4A0OA13GFOzbIV82';
+
+export const ITEMS_PER_LOAD = 10;
