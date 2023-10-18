@@ -85,18 +85,12 @@ export const renderGifDetails = async (id = null) => {
  * Renders the Home page.
  */
 let offset = 0;
-export const renderHome = async () => {
+export const renderHome = async (force) => {
   q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
-  const gifS = await loadKittyGifS(ITEMS_PER_LOAD, offset);
+  const gifS = await loadKittyGifS(ITEMS_PER_LOAD, offset, force);
   offset += ITEMS_PER_LOAD;
-  
-  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifS);
-  // const loadMoreButton = q('#load-more-button');
-  // if(gifS.length < ITEMS_PER_LOAD) {
-  //   loadMoreButton.style.display = 'none';
-  // } else {
-  //   loadMoreButton.style.display = 'block';
-  // }
+
+  q(CONTAINER_SELECTOR).innerHTML = toHomeView(gifS);
 };
 
 /**
@@ -104,7 +98,7 @@ export const renderHome = async () => {
  * @async
  */
 const renderTrending = async () => {
-  
+
   q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
   const gifS = await loadTrendingGifS();
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifS);
@@ -117,14 +111,14 @@ export const renderUploaded = async () => {
   const uploadedArr = JSON.parse(localStorage.getItem('uploadedGifs')) || [];
 
   const gifs = await Promise.all(
-      uploadedArr.map(async (id) => {
-        try {
-          return await loadSingleGif(id);
-        } catch (error) {
-          console.error(error.message);
-          return null;
-        }
-      }),
+    uploadedArr.map(async (id) => {
+      try {
+        return await loadSingleGif(id);
+      } catch (error) {
+        console.error(error.message);
+        return null;
+      }
+    }),
   );
 
   q(CONTAINER_SELECTOR).innerHTML = toUploadedView(gifs);
@@ -148,7 +142,7 @@ export const renderFavorites = async () => {
 
   try {
     const favGifs = await Promise.all(
-        favorites.map(async (id) => await loadSingleGif(id)),
+      favorites.map(async (id) => await loadSingleGif(id)),
     );
 
     q(CONTAINER_SELECTOR).innerHTML =

@@ -14,7 +14,7 @@ const GIPHY_API_BASE_URL = 'https://api.giphy.com/v1/gifs';
 export const loadTrendingGifs = async () => {
   try {
     const response = await fetch(
-        `${GIPHY_API_BASE_URL}/trending?api_key=${API_KEY}`,
+      `${GIPHY_API_BASE_URL}/trending?api_key=${API_KEY}`,
     );
     if (response.ok) {
       const data = await response.json();
@@ -36,8 +36,8 @@ export const loadTrendingGifs = async () => {
 export const searchGifs = async (searchTerm) => {
   try {
     const response = await fetch(
-        // eslint-disable-next-line max-len
-        `${GIPHY_API_BASE_URL}/search?q=${searchTerm}&api_key=${API_KEY}&limit=10`,
+      // eslint-disable-next-line max-len
+      `${GIPHY_API_BASE_URL}/search?q=${searchTerm}&api_key=${API_KEY}&limit=10`,
     );
     if (response.ok) {
       const data = await response.json();
@@ -58,7 +58,7 @@ export const searchGifs = async (searchTerm) => {
 export const searchRandomGifs = async () => {
   try {
     const response = await fetch(
-        `${GIPHY_API_BASE_URL}/random?api_key=${API_KEY}`,
+      `${GIPHY_API_BASE_URL}/random?api_key=${API_KEY}`,
     );
     if (response.ok) {
       const data = await response.json();
@@ -92,13 +92,17 @@ export const loadTrendingGifS = async () => {
  * @returns {Promise<Array>} - A promise that resolves to an array to trending GIFs.
  */
 let loadedKittens = [];
-export const loadKittyGifS = async (limit, offset) => {
+export const loadKittyGifS = async (limit, offset, forceLoadMore) => {
+  if (!forceLoadMore && loadedKittens.length !== 0) {
+    return loadedKittens;
+  }
+
   try {
     const response = await fetch(`${GIPHY_API_BASE_URL}/search?q=cats&api_key=${API_KEY}&limit=${limit}&offset=${offset}`);
     const data = await response.json();
     console.log(data.data)
-    
-    loadedKittens = loadedKittens.concat(data.data)
+
+    loadedKittens = loadedKittens.concat(data.data);
     return loadedKittens;
   } catch (error) {
     console.error(error);
@@ -140,7 +144,7 @@ export const loadUploadGif = (file) => {
 
     xhr.upload.addEventListener('progress', (event) => {
       uploadedFileCounter.innerHTML = `${Math.round(
-          (event.loaded / event.total) * 99,
+        (event.loaded / event.total) * 99,
       )}%`;
     });
 

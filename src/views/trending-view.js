@@ -12,10 +12,4 @@ export const toTrendingView = (gifs) => `
 <div id="gif-grid">
 ${gifs.map(toGifSimple).join('\n')}
 </div>
-<br>
-<div id="gif-grid">
-  <!-- <button id="load-more-button-prev">prev</button> -->
-  <button id="load-more-button-next">Load more</button>
-</div>
- 
   `;

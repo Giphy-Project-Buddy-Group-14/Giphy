@@ -26,10 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    if(event.target.id === 'load-more-button-next') {
-      renderHome()
+    if (event.target.id === 'load-more-button-next') {
+      renderHome(true);
     }
-    
+
   });
 
   q('input#search').addEventListener('click', (event) => {

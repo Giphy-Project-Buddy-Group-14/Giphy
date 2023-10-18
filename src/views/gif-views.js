@@ -50,10 +50,10 @@ const toGifDetailed = (gif) => `
     <p>Description: ${gif.user.description}</p>
     <p>Profile GiPhy: ${gif.user.profile_url}</p>
     <p>Profile Instagram: ${gif.user.instagram_url}</p>
-    <p>Rating: ${gif.user.rating}</p>
+    ${gif.user.rating ? `< p > Rating : ${gif.user.rating}</p> ` : ''}
     ` :
     ''
-}
-  </div>
-</div>
-`;
+  }
+  </div >
+</div >
+  `;
