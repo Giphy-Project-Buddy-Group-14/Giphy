@@ -1,6 +1,7 @@
 import { API_KEY } from '../common/api_key.js';
 import { API_URL } from '../common/constants.js';
 import { q } from '../events/helpers.js';
+import { UPLOAD_URL } from '../common/constants.js';
 
 const GIPHY_API_BASE_URL = 'https://api.giphy.com/v1/gifs';
 
