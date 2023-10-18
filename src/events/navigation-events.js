@@ -102,7 +102,7 @@ const renderTrending = async () => {
 /**
  * Renders the Uploaded page
  */
-const renderUploaded = async () => {
+export const renderUploaded = async () => {
   const uploadedArr = JSON.parse(localStorage.getItem('uploadedGifs')) || [];
 
   const gifs = await Promise.all(

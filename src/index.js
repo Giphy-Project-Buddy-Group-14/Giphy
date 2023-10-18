@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPage(HOME);
   });
 
-  async function searchGIFs(searchStr) {
+  const searchGIFs = async (searchStr) => {
     try {
       const gifs = await searchGifs(searchStr);
       const imagesHtml = await toSearchView(gifs, searchStr);

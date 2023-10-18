@@ -1,5 +1,6 @@
 import { loadUploadGif } from '../requests/request-service.js';
 import { fileValidate, q } from './helpers.js';
+import { renderUploaded } from './navigation-events.js';
 
 /**
  * Retrieves a file preview, validates the file, and initiates the upload process.
@@ -48,6 +49,8 @@ export const renderFilePreview = (file) => {
         } else {
           localStorage.setItem('uploadedGifs', JSON.stringify([id]));
         }
+
+        renderUploaded();
       } catch (error) {
         console.log(error.message);
       }
