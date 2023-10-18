@@ -23,7 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const gifId = event.target.getAttribute('data-gif-id');
       toggleFavoriteStatus(gifId);
 
-      if (q('a.nav-link.active').textContent === 'Favorites') {
+      const selectedNavigationItem = q('a.nav-link.active');
+
+      if (selectedNavigationItem && selectedNavigationItem.textContent === 'Favorites') {
         await renderFavorites();
       }
     }
