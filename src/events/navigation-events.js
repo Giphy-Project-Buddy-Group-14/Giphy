@@ -86,7 +86,6 @@ export const renderGifDetails = async (id = null) => {
  */
 let offset = 0;
 export const renderHome = async (force) => {
-  q(CONTAINER_SELECTOR).innerHTML = 'Loading ...';
   const gifS = await loadKittyGifS(ITEMS_PER_LOAD, offset, force);
   offset += ITEMS_PER_LOAD;
 
