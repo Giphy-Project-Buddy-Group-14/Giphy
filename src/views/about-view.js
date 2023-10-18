@@ -31,7 +31,7 @@ export const toAboutView = () => `
 
       <div class="card">
         <div class="photo">
-          <img src="./images/linkedin_pic copy.png" width="400" height="400" />
+          <img src="./images/linkedin_pic.png" width="400" height="400" />
           <div class="name">Nikolay Hadzhiyski</div>
         </div>
         <div class="description"S>
