@@ -10,7 +10,7 @@ export const toAboutView = () => `
     <div class="cards">
       <div class="card">
         <div class="photo">
-          <img src="./images/tihomir.jpg" width="400" height="200" />
+          <img src="./images/tihomir.jpg" width="400" height="400" />
           <div class="name">Tihomir Nikolov</div>
         </div>
         <div class="description">
@@ -21,7 +21,7 @@ export const toAboutView = () => `
 
       <div class="card">
         <div class="photo">
-          <img src="./images/sis.jpg" width="400" height="200" />
+          <img src="./images/sis.jpg" width="400" height="400" />
           <div class="name">Svilena Slavev</div>
         </div>
         <div class="description"S>
@@ -31,7 +31,7 @@ export const toAboutView = () => `
 
       <div class="card">
         <div class="photo">
-          <img src="./images/linkedin_pic copy.png" width="400" height="200" />
+          <img src="./images/linkedin_pic copy.png" width="400" height="400" />
           <div class="name">Nikolay Hadzhiyski</div>
         </div>
         <div class="description"S>
