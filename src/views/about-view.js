@@ -38,11 +38,11 @@ export const toAboutView = () => `
 
       <div class="card">
         <div class="photo">
-          <img src="./images/linkedin_pic.png" width="400" height="200" />
-          <div class="name">John Smith</div>
+          <img src="./images/linkedin_pic copy.png" width="400" height="200" />
+          <div class="name">Nikolay Hadzhiyski</div>
         </div>
         <div class="description"S>
-        Lorem lipsum dolor sit ement, lorem lipsum dolor sit ement, lorem lipsum dolor sit ement ...
+        Javascript Software Engineer
         </div>
       </div>
     </div>
