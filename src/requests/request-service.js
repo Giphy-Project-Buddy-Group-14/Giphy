@@ -14,14 +14,13 @@ const GIPHY_API_BASE_URL = 'https://api.giphy.com/v1/gifs';
 export const loadTrendingGifs = async () => {
   try {
     const response = await fetch(
-      `${GIPHY_API_BASE_URL}/trending?api_key=${API_KEY}`
+        `${GIPHY_API_BASE_URL}/trending?api_key=${API_KEY}`,
     );
     if (response.ok) {
       const data = await response.json();
       return data.data;
-    } else {
-      throw new Error('Failed to load trending GIFs');
     }
+    throw new Error('Failed to load trending GIFs');
   } catch (error) {
     console.error(error);
   }
@@ -37,14 +36,14 @@ export const loadTrendingGifs = async () => {
 export const searchGifs = async (searchTerm) => {
   try {
     const response = await fetch(
-      `${GIPHY_API_BASE_URL}/search?q=${searchTerm}&api_key=${API_KEY}&limit=10`
+        // eslint-disable-next-line max-len
+        `${GIPHY_API_BASE_URL}/search?q=${searchTerm}&api_key=${API_KEY}&limit=10`,
     );
     if (response.ok) {
       const data = await response.json();
       return data.data;
-    } else {
-      throw new Error('Failed to search GIFs');
     }
+    throw new Error('Failed to search GIFs');
   } catch (error) {
     console.error(error);
   }
@@ -59,14 +58,13 @@ export const searchGifs = async (searchTerm) => {
 export const searchRandomGifs = async () => {
   try {
     const response = await fetch(
-      `${GIPHY_API_BASE_URL}/random?api_key=${API_KEY}`
+        `${GIPHY_API_BASE_URL}/random?api_key=${API_KEY}`,
     );
     if (response.ok) {
       const data = await response.json();
       return data.data;
-    } else {
-      throw new Error('Failed to search GIFs');
     }
+    throw new Error('Failed to search GIFs');
   } catch (error) {
     console.error(error);
   }
@@ -79,6 +77,7 @@ export const searchRandomGifs = async () => {
  */
 export const loadTrendingGifS = async () => {
   try {
+    // eslint-disable-next-line max-len
     const response = await fetch(`${API_URL}/trending?api_key=${SVILENA_API_KEY}&limit=50`);
     const data = await response.json();
     return data.data;
@@ -94,6 +93,7 @@ export const loadTrendingGifS = async () => {
  */
 export const loadKittyGifS = async () => {
   try {
+    // eslint-disable-next-line max-len
     const response = await fetch(`${GIPHY_API_BASE_URL}/search?q=cats&api_key=${API_KEY}&limit=50`);
     const data = await response.json();
     return data.data;
@@ -101,7 +101,6 @@ export const loadKittyGifS = async () => {
     console.error(error);
   }
 };
-
 
 
 /**
@@ -139,7 +138,7 @@ export const loadUploadGif = (file) => {
 
     xhr.upload.addEventListener('progress', (event) => {
       uploadedFileCounter.innerHTML = `${Math.round(
-        (event.loaded / event.total) * 99
+          (event.loaded / event.total) * 99,
       )}%`;
     });
 

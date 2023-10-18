@@ -18,7 +18,7 @@ export const addFavorite = (gifId) => {
  * @param {string} gifId - The ID of the GIF to be removed.
  */
 export const removeFavorite = (gifId) => {
-  favorites = favorites.filter(id => id !== gifId);
+  favorites = favorites.filter((id) => id !== gifId);
   updateLocalStorage();
 };
 

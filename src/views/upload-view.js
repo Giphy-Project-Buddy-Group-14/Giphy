@@ -15,9 +15,7 @@ export const toUploadView = () => `
       File should be a GIF
       <strong class="upload-area__tooltip">
         Like
-        <span class="upload-area__tooltip-data">${[...gifFileTypes].join(
-          ', .'
-        )}</span> <!-- Data Will be Comes From Js -->
+        <span class="upload-area__tooltip-data">${[...gifFileTypes].join(', .')}</span> <!-- Data Will be Comes From Js -->
       </strong>
     </p>
   </div>

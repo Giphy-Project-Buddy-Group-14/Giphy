@@ -26,6 +26,7 @@ import { addDropZoneEvents } from '../index.js';
 import { getFavorites } from '../data/favorites.js';
 import { toRandomGifView } from '../views/random-gif-view.js';
 
+// eslint-disable-next-line valid-jsdoc
 /**
  * Loads a specific page based on the provided page and optional ID.
  *
@@ -105,14 +106,14 @@ const renderUploaded = async () => {
   const uploadedArr = JSON.parse(localStorage.getItem('uploadedGifs')) || [];
 
   const gifs = await Promise.all(
-    uploadedArr.map(async (id) => {
-      try {
-        return await loadSingleGif(id);
-      } catch (error) {
-        console.error(error.message);
-        return null;
-      }
-    })
+      uploadedArr.map(async (id) => {
+        try {
+          return await loadSingleGif(id);
+        } catch (error) {
+          console.error(error.message);
+          return null;
+        }
+      }),
   );
 
   q(CONTAINER_SELECTOR).innerHTML = toUploadedView(gifs);
@@ -128,7 +129,7 @@ const renderUpload = () => {
 
 /**
  * Renders the Favorites page.
- * 
+ *
  * @async
  */
 export const renderFavorites = async () => {
@@ -136,13 +137,13 @@ export const renderFavorites = async () => {
 
   try {
     const favGifs = await Promise.all(
-      favorites.map(async (id) => await loadSingleGif(id))
+        favorites.map(async (id) => await loadSingleGif(id)),
     );
 
     q(CONTAINER_SELECTOR).innerHTML =
-      favGifs.length === 0
-        ? toRandomGifView([await searchRandomGifs()])
-        : toFavoritesView(favGifs);
+      favGifs.length === 0 ?
+        toRandomGifView([await searchRandomGifs()]) :
+        toFavoritesView(favGifs);
   } catch (error) {
     console.error(error.message);
   }

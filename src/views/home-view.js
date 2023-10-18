@@ -8,4 +8,3 @@ export const toHomeView = () => `
 <p>Home</p>
 </div>
 `;
-//Tука може да показваме random gifphys 

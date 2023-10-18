@@ -11,9 +11,9 @@ export const toUploadedView = (gifs) => `
 <h1>Your uploaded Gifs:</h1>
 <div id="gif-grid">
   ${
-    gifs.map(toGifSimple).join('\n') ||
+  gifs.map(toGifSimple).join('\n') ||
     '<p>Upload some gifs to see them here</p>'
-  }
+}
 </div>
 </div>
 `;

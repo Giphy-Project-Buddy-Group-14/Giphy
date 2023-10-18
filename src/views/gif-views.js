@@ -43,17 +43,17 @@ const toGifDetailed = (gif) => `
     <img src="${gif.images.original.url}">
   </div>
   <div class="gif-info">
-  ${gif.user
-    ? `
+  ${gif.user ?
+    `
     <p><img src="${gif.user.avatar_url}" width="50" hight="50"/></p>
     <p>User: ${gif.user.display_name}</p>
     <p>Description: ${gif.user.description}</p>
     <p>Profile GiPhy: ${gif.user.profile_url}</p>
     <p>Profile Instagram: ${gif.user.instagram_url}</p>
     <p>Rating: ${gif.user.rating}</p>
-    `
-    : ''
-  }
+    ` :
+    ''
+}
   </div>
 </div>
 `;

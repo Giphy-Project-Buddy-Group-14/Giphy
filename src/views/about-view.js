@@ -8,11 +8,11 @@ export const toAboutView = () => `
   <div class="content">
     <h1>About the app</h1>
     <h3>${new Date()
-    .toISOString()
-    .slice(0, 10)
-    .split('-')
-    .reverse()
-    .join('/')}</h3>
+      .toISOString()
+      .slice(0, 10)
+      .split('-')
+      .reverse()
+      .join('/')}</h3>
 
     <div class="cards">
       <div class="card">

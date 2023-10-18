@@ -53,8 +53,10 @@ export const fileValidate = (fileType, fileSize) => {
     if (fileSize <= 100000000) { // 100MB
       return true;
     }
+    // eslint-disable-next-line no-alert
     return alert('Please Your File Should be 100 Megabytes or Less');
   } // Else File Type
+  // eslint-disable-next-line no-alert
   return alert('Please make sure to upload A GIF File Type');
 };
 

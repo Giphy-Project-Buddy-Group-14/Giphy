@@ -1,4 +1,4 @@
-import { toGifSimple } from "./gif-views.js";
+import { toGifSimple } from './gif-views.js';
 
 /**
  * Generates a view for displaying a random GIF when no matching GIFs are found.
@@ -12,7 +12,7 @@ export const toRandomGifView = (gifs) => `
 <div id="gif-grid">
   ${gifs.map(toGifSimple).join('\n') ||
     '<p>Upload some gifs to see them here</p>'
-    }
+}
 </div>
 </div>
 `;
