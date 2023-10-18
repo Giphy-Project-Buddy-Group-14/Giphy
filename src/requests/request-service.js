@@ -1,6 +1,5 @@
 import { API_KEY } from '../common/api_key.js';
-import { TIHOMIR_API_KEY, UPLOAD_URL } from '../common/constants.js';
-import { API_URL, SVILENA_API_KEY } from '../common/constants.js';
+import { API_URL } from '../common/constants.js';
 import { q } from '../events/helpers.js';
 
 const GIPHY_API_BASE_URL = 'https://api.giphy.com/v1/gifs';
@@ -14,7 +13,7 @@ const GIPHY_API_BASE_URL = 'https://api.giphy.com/v1/gifs';
 export const loadTrendingGifs = async () => {
   try {
     const response = await fetch(
-      `${GIPHY_API_BASE_URL}/trending?api_key=${API_KEY}`,
+      `${GIPHY_API_BASE_URL}/trending?api_key=${API_KEY}&rating=g`,
     );
     if (response.ok) {
       const data = await response.json();
@@ -37,7 +36,7 @@ export const searchGifs = async (searchTerm) => {
   try {
     const response = await fetch(
       // eslint-disable-next-line max-len
-      `${GIPHY_API_BASE_URL}/search?q=${searchTerm}&api_key=${API_KEY}&limit=10`,
+      `${GIPHY_API_BASE_URL}/search?q=${searchTerm}&api_key=${API_KEY}&limit=10&rating=g`,
     );
     if (response.ok) {
       const data = await response.json();
@@ -58,7 +57,7 @@ export const searchGifs = async (searchTerm) => {
 export const searchRandomGifs = async () => {
   try {
     const response = await fetch(
-      `${GIPHY_API_BASE_URL}/random?api_key=${API_KEY}`,
+      `${GIPHY_API_BASE_URL}/random?api_key=${API_KEY}&rating=g`,
     );
     if (response.ok) {
       const data = await response.json();
@@ -78,7 +77,7 @@ export const searchRandomGifs = async () => {
 export const loadTrendingGifS = async () => {
   try {
     // eslint-disable-next-line max-len
-    const response = await fetch(`${API_URL}/trending?api_key=${SVILENA_API_KEY}&limit=50`);
+    const response = await fetch(`${API_URL}/trending?api_key=${API_KEY}&limit=50&rating=g`);
     const data = await response.json();
     return data.data;
   } catch (error) {
@@ -98,9 +97,8 @@ export const loadKittyGifS = async (limit, offset, forceLoadMore) => {
   }
 
   try {
-    const response = await fetch(`${GIPHY_API_BASE_URL}/search?q=cats&api_key=${API_KEY}&limit=${limit}&offset=${offset}`);
+    const response = await fetch(`${GIPHY_API_BASE_URL}/search?q=cats&api_key=${API_KEY}&limit=${limit}&offset=${offset}&rating=g`);
     const data = await response.json();
-    console.log(data.data)
 
     loadedKittens = loadedKittens.concat(data.data);
     return loadedKittens;
@@ -118,7 +116,7 @@ export const loadKittyGifS = async (limit, offset, forceLoadMore) => {
  */
 export const loadSingleGif = async (id) => {
   try {
-    const response = await fetch(`${API_URL}/${id}?api_key=${SVILENA_API_KEY}`);
+    const response = await fetch(`${API_URL}/${id}?api_key=${API_KEY}`);
     const data = await response.json();
     return data.data;
   } catch (error) {
@@ -157,7 +155,7 @@ export const loadUploadGif = (file) => {
       }
     });
 
-    xhr.open('post', `https://${UPLOAD_URL}?api_key=${TIHOMIR_API_KEY}`);
+    xhr.open('post', `https://${UPLOAD_URL}?api_key=${API_KEY}`);
     xhr.send(formContent);
   });
 };
