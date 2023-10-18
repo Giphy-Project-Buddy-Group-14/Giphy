@@ -1,4 +1,4 @@
-import { API_KEY } from '../common/api_key.js';
+import { API_KEY } from '../common/constants.js';
 import { API_URL } from '../common/constants.js';
 import { q } from '../events/helpers.js';
 import { UPLOAD_URL } from '../common/constants.js';

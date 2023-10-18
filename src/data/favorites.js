@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
 /**
@@ -33,5 +34,6 @@ export const getFavorites = () => [...favorites];
  * Updates the local storage with the current list of favorites.
  */
 const updateLocalStorage = () => {
+  // eslint-disable-next-line no-undef
   localStorage.setItem('favorites', JSON.stringify(favorites));
 };
