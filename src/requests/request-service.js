@@ -25,7 +25,6 @@ export const loadTrendingGifs = async () => {
   } catch (error) {
     console.error(error);
   }
-  return [];
 };
 
 /**
@@ -49,7 +48,6 @@ export const searchGifs = async (searchTerm) => {
   } catch (error) {
     console.error(error);
   }
-  return [];
 };
 
 /**
@@ -71,7 +69,6 @@ export const searchRandomGifs = async () => {
   } catch (error) {
     console.error(error);
   }
-  return [];
 };
 
 /**
@@ -88,7 +85,6 @@ export const loadTrendingGifS = async () => {
   } catch (error) {
     console.error(error);
   }
-  return [];
 };
 
 /**
@@ -112,7 +108,6 @@ export const loadKittyGifS = async (limit, offset, forceLoadMore) => {
   } catch (error) {
     console.error(error);
   }
-  return [];
 };
 
 /**
@@ -130,7 +125,6 @@ export const loadSingleGif = async (id) => {
   } catch (error) {
     console.error(error);
   }
-  return [];
 };
 
 /**
